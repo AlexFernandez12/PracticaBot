@@ -9,12 +9,12 @@ $chatId = $update['message']['chat']['id'];
 $message = $update['message']['text'];
 
 switch($message) {
-    case '/start':
+    case 'hola':
         $response = 'Me has iniciado';
         sendMessage($chatId, $response);
         break;
     case '/info':
-        $response = 'Hola! Soy @trecno_bot';
+        $response = 'Hola! Soy @alexbot';
         sendMessage($chatId, $response);
         break;
     default:
