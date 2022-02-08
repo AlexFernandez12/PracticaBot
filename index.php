@@ -1,6 +1,6 @@
 <?php 
  
-$botToken = "ESCRIBE_TU_TOKEN";
+$botToken = "5190510451:AAEB_CmkxY-VXdoB8Fkwznrb3SVb_8YKhHc";
  
 $website = "https://api.telegram.org/bot".$botToken;
  
