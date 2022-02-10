@@ -2,6 +2,7 @@
 $token = '5190510451:AAEB_CmkxY-VXdoB8Fkwznrb3SVb_8YKhHc';
 $website = 'https://api.telegram.org/bot'.$token;
  
+$urldom = "messi.jpg";
 $input = file_get_contents('php://input');
 $update = json_decode($input, TRUE);
  
