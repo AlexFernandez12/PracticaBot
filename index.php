@@ -19,8 +19,11 @@ switch($message) {
     case 'Noticia':
             getNoticias($chatId);
          break;
-    case 'youtube':
-            sendMessage($chatId, "Mi canal de YouTube es <a href='https://www.youtube.com/channel/UCGArCE3vmQkFpu_o_6axt1g'>SrVazquez</a>");
+    case 'imagen' :
+         $response = "Enviando foto en 3...2...1...Ahí va";
+        sendMessage ($chatId, $response);
+        sendPhoto($chatId);
+            break;
     default:
         $response = 'No te he entendido';
         sendMessage($chatId, $response);
@@ -37,7 +40,7 @@ function getNoticias($chatId){
 	//include("simple_html_dom.php");
 
 	$context = stream_context_create(array('http' =>  array('header' => 'Accept: application/xml')));
-	$url = "https://www.marca.com/rss/rss.aspx";
+	$url = "http://www.europapress.es/rss/rss.aspx";
 
 	$xmlstring = file_get_contents($url, false, $context);
 
@@ -46,5 +49,10 @@ function getNoticias($chatId){
 	$array = json_decode($json, TRUE);
 }
 
+function sendPhoto($chatId) {
+    $url = $GLOBALS[website].'/sendPhoto?
+    chat_id='.$chatId.'&photo='.$urldom;
+    file_get_contents($url);
+}
 ?>
 
