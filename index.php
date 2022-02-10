@@ -2,7 +2,6 @@
 $token = '5190510451:AAEB_CmkxY-VXdoB8Fkwznrb3SVb_8YKhHc';
 $website = 'https://api.telegram.org/bot'.$token;
  
-$urldom = "https://upload.wikimedia.org/wikipedia/commons/c/c1/Lionel_Messi_20180626.jpg";
 $input = file_get_contents('php://input');
 $update = json_decode($input, TRUE);
  
@@ -20,7 +19,7 @@ switch($message) {
     case 'Noticia':
             getNoticias($chatId);
          break;
-    case 'imagen' :
+    case 'imagen':
         sendPhoto($chatId);
             break;
     default:
@@ -49,8 +48,9 @@ function getNoticias($chatId){
 }
 
 function sendPhoto($chatId) {
+    $urldom = "https://upload.wikimedia.org/wikipedia/commons/c/c1/Lionel_Messi_20180626.jpg";
     $url1 = $GLOBALS[website].'/sendPhoto?
-    chat_id='.$chatId.'&photo='.$urldom;
+    chat_id='.$chatId.$urldom;
     file_get_contents($url1);
 }
 ?>
