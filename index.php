@@ -35,7 +35,7 @@ function sendMessage($chatId, $response) {
 function getNoticias($chatId){
 
     $context = stream_context_create(array('http' =>  array('header' => 'Accept: application/xml')));
-	$url = "https://www.marca.com/marcador/futbol/iphone/1/2018_19/fase0/jornada_8/marcador.xml";
+	$url = "http://www.europapress.es/rss/rss.aspx";
 
 	$xmlstring = file_get_contents($url, false, $context);
 
