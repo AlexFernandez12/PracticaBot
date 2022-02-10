@@ -1,7 +1,7 @@
 <?php
 $token = '5190510451:AAEB_CmkxY-VXdoB8Fkwznrb3SVb_8YKhHc';
 $website = 'https://api.telegram.org/bot'.$token;
-
+ 
 $input = file_get_contents('php://input');
 $update = json_decode($input, TRUE);
  
@@ -19,6 +19,8 @@ switch($message) {
     case 'Noticia':
             getNoticias($chatId);
          break;
+    case 'youtube':
+            sendMessage($chatId, "Mi canal de YouTube es <a href='https://www.youtube.com/channel/UCGArCE3vmQkFpu_o_6axt1g'>SrVazquez</a>");
     default:
         $response = 'No te he entendido';
         sendMessage($chatId, $response);
@@ -43,6 +45,7 @@ function getNoticias($chatId){
 	$json = json_encode($xml);
 	$array = json_decode($json, TRUE);
 }
+
 
 ?>
 
