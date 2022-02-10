@@ -16,12 +16,11 @@ switch($message) {
         $response = 'Hola! Soy @Alex19bot';
         sendMessage($chatId, $response);
         break;
-        case '/noticias':
+    case '/noticias':
             getNoticias($chatId);
-            break;
-        case '/participar': case '/participar@VazCell_bot':
-            getSorteos($chatId, $message, $userId, $firstname, $agg);
-            break;
+         break;
+    case '/youtube':
+            sendMessage($chatId, "Mi canal de YouTube es <a href='https://www.youtube.com/channel/UCGArCE3vmQkFpu_o_6axt1g'>SrVazquez</a>");
     default:
         $response = 'No te he entendido';
         sendMessage($chatId, $response);
