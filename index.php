@@ -19,9 +19,6 @@ switch($message) {
     case 'Noticia':
             getNoticias($chatId);
          break;
-    case 'imagen':
-        sendPhoto($chatId);
-            break;
     default:
         $response = 'No te he entendido';
         sendMessage($chatId, $response);
@@ -47,11 +44,5 @@ function getNoticias($chatId){
 	$array = json_decode($json, TRUE);
 }
 
-function sendPhoto($chatId) {
-    $urldom = "https://upload.wikimedia.org/wikipedia/commons/c/c1/Lionel_Messi_20180626.jpg";
-    $url1 = $GLOBALS[website].'/sendPhoto?
-    chat_id='.$chatId.$urldom;
-    file_get_contents($url1);
-}
 ?>
 
