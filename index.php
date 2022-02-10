@@ -42,7 +42,7 @@ function getNoticias($chatId){
  
     //include("simple_html_dom.php");
  
-    $context = stream_context_create(array('http' =>  array('header' => 'Accept: application/xml')));
+    $context = stream_context_create(array('https' =>  array('header' => 'Accept: application/xml')));
     $url = "https://www.marca.com/rss.html";
     $xmlstring = file_get_contents($url, false, $context);
  
