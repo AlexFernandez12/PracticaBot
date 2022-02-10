@@ -21,10 +21,6 @@ switch($message) {
     case 'Noticia':
             getNoticias($chatId);
          break;
-         case '/imagen' :
-            sendMessage ($chatId, $response);
-            sendPhoto($chatId);
-            break;
     default:
         $response = 'No te he entendido';
         sendMessage($chatId, $response);
