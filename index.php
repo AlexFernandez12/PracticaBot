@@ -34,10 +34,8 @@ function sendMessage($chatId, $response) {
  
 function getNoticias($chatId){
 
-	//include("simple_html_dom.php");
-
-	$context = stream_context_create(array('http' =>  array('header' => 'Accept: application/xml')));
-	$url = "https://www.marca.com/";
+    $context = stream_context_create(array('http' =>  array('header' => 'Accept: application/xml')));
+	$url = "https://www.marca.com/marcador/futbol/iphone/1/2018_19/fase0/jornada_8/marcador.xml";
 
 	$xmlstring = file_get_contents($url, false, $context);
 
