@@ -30,9 +30,12 @@ switch($message) {
         break;
  
     }
-function sendMessage($chatId, $response) {
+function sendMessage($chatId, $response, $keyboard = NULL) {
     $url = $GLOBALS['website'].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.urlencode($response);
     file_get_contents($url);
+    if (isset($keyboard)) {
+        $teclado = '&reply_markup={"keyboard":['.$keyboard.'], "resize_keyboard":true, "one_time_keyboard":true}';
+    }
 }
  
 function getNoticias($chatId){
