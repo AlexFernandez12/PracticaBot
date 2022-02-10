@@ -1,7 +1,9 @@
 <?php
 $token = '5190510451:AAEB_CmkxY-VXdoB8Fkwznrb3SVb_8YKhHc';
+
 $website = 'https://api.telegram.org/bot'.$token;
- 
+$urlphoto = "sendPhoto?chat_id=" . $chatId;
+$urldom = "https://mi.dominio.net/image.jpg";
 $input = file_get_contents('php://input');
 $update = json_decode($input, TRUE);
  
@@ -43,6 +45,10 @@ function getNoticias($chatId){
 	$json = json_encode($xml);
 	$array = json_decode($json, TRUE);
 }
-
+function sendPhoto($chatId) {
+    $url = $GLOBALS[website].'/sendPhoto?
+chat_id='.$chatId.'&photo='.$urldom;
+ file_get_contents($url);
+}
 ?>
 
