@@ -43,16 +43,16 @@ function getNoticias($chatId){
     //include("simple_html_dom.php");
  
     $context = stream_context_create(array('https' =>  array('header' => 'Accept: application/xml')));
-    $url = "https://e00-marca.uecdn.es/rss/futbol/primera-division.xml";
+    $url = "https://www.marca.com/rss.html";
     $xmlstring = file_get_contents($url, false, $context);
  
     $xml = simplexml_load_string($xmlstring, "SimpleXMLElement", LIBXML_NOCDATA);
     $json = json_encode($xml);
     $array = json_decode($json, TRUE);
  
-    
-        $titulos = $titulos."\n\n".$array['channel']['0']['description']."<a href='".$array['channel']['title']['link']."'> +info</a>";
-    
+    for ($i=0; $i < 9; $i++) { 
+        $titulos = $titulos."\n\n".$array['channel']['item'][$i]['title']."<a href='".$array['channel']['item'][$i]['link']."'> +info</a>";
+    }
  
     sendMessage($chatId, $titulos);
  
