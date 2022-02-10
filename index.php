@@ -51,7 +51,7 @@ function getNoticias($chatId){
     $array = json_decode($json, TRUE);
  
     
-        $titulos = $titulos."\n\n".$array['channel']['description']."<a href='".$array['channel']['title']['link']."'> +info</a>";
+        $titulos = $titulos."\n\n".$array['channel']['0']['description']."<a href='".$array['channel']['title']['link']."'> +info</a>";
     
  
     sendMessage($chatId, $titulos);
