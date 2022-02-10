@@ -21,7 +21,6 @@ switch($message) {
             getNoticias($chatId);
          break;
     case 'imagen' :
-         $response = "Enviando foto en 3...2...1...Ahí va";
         sendMessage ($chatId, $response);
         sendPhoto($chatId);
             break;
