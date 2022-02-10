@@ -49,10 +49,11 @@ function getNoticias($chatId){
     $xml = simplexml_load_string($xmlstring, "SimpleXMLElement", LIBXML_NOCDATA);
     $json = json_encode($xml);
     $array = json_decode($json, TRUE);
- 
-    $titulos = $titulos."\n\n".$array['channel']['title']."<a href='".$array['channel']['item']['1']['link']."'> +info</a>";
     
- 
+    for ($i=0; $i < 9; $i++) { 
+    $titulos = $titulos."\n\n".$array['channel']['title']."<a href='".$array['channel']['item'][$i]['link']."'> +info</a>";
+    }
+
     sendMessage($chatId, $titulos);
  
  
