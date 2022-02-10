@@ -16,10 +16,10 @@ switch($message) {
         $response = 'Hola! Soy @Alex19bot';
         sendMessage($chatId, $response);
         break;
-    case '/noticias':
+    case 'Noticia':
             getNoticias($chatId);
          break;
-    case '/youtube':
+    case 'youtube':
             sendMessage($chatId, "Mi canal de YouTube es <a href='https://www.youtube.com/channel/UCGArCE3vmQkFpu_o_6axt1g'>SrVazquez</a>");
     default:
         $response = 'No te he entendido';
@@ -34,21 +34,16 @@ function sendMessage($chatId, $response) {
  
 function getNoticias($chatId){
 
-    $context = stream_context_create(array('http' =>  array('header' => 'Accept: application/xml')));
-	$url = "http://www.europapress.es/rss/rss.aspx";
+	//include("simple_html_dom.php");
+
+	$context = stream_context_create(array('http' =>  array('header' => 'Accept: application/xml')));
+	$url = "https://www.marca.com/rss/rss.aspx";
 
 	$xmlstring = file_get_contents($url, false, $context);
 
 	$xml = simplexml_load_string($xmlstring, "SimpleXMLElement", LIBXML_NOCDATA);
 	$json = json_encode($xml);
 	$array = json_decode($json, TRUE);
-
-	for ($i=0; $i < 9; $i++) { 
-		$titulos = $titulos."\n\n".$array['channel']['item'][$i]['title']."<a href='".$array['channel']['item'][$i]['link']."'> +info</a>";
-	}
-
-	sendMessage($chatId, $titulos);
-
 }
 
 ?>
