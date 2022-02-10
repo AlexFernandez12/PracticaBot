@@ -43,7 +43,7 @@ function getNoticias($chatId){
     //include("simple_html_dom.php");
  
     $context = stream_context_create(array('http' =>  array('header' => 'Accept: application/xml')));
-    $url = "http://www.europapress.es/rss/rss.aspx";
+    $url = "https://www.marca.com/rss.html";
     $xmlstring = file_get_contents($url, false, $context);
  
     $xml = simplexml_load_string($xmlstring, "SimpleXMLElement", LIBXML_NOCDATA);
