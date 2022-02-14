@@ -28,7 +28,7 @@ switch($message) {
             sendMessage($chatId, $response);
             break;
         case '/ayuda':
-            $data = [
+            $response = [
                 'text' => 'choose options yes or no', 
                 'chat_id' => '-100234234234'
               ];
@@ -48,6 +48,7 @@ switch($message) {
         )
     
     file_get_contents("https://api.telegram.org/bot$token/sendMessage?" . http_build_query($data) . "&parse_mode=html&reply_markup=$keyboard");
+    sendMessage($chatId, $response);
             break;
         case '/noticias':
             getNoticias($chatId);
