@@ -30,7 +30,8 @@ switch($message) {
         case '/ayuda':
             $response = "Tranquilo, estoy contigo.";
             $keyboard = '["Gracias"],["Pos Ok"]';
-            sendMessage($chatId, $response,$keyboard = NULL);
+            sendMessage($chatId, $response);
+            redes()
             break;
         case '/noticias':
             getNoticias($chatId);
@@ -50,6 +51,35 @@ switch($message) {
         break;
  
     }
+
+function redes(){
+    $linkyt = "https://www.youtube.com/watch?v=abQaOAy9JlQ";
+    $linktw = "";
+
+
+    $listbtn =json_encode(
+        array(
+            "inline_keyboard"=>array(
+                array(
+                    array('text'=>'YOUTUBE', 'url'=>$linkyt),
+                    array('text'=>'TWITCH', 'url'=>$linktw),
+                ),
+            ),
+        )
+        );
+
+        $texto ="Redes Sociales:";
+        $url =$GLOBALS[website]."/sendMessage?chat_id=".$GLOBALS[chatId]."&text=".urlencode($texto)."&reply_markup=".$listbtn;
+        file_get_contents($url);
+        return $url;
+}
+
+
+
+
+
+
+
 function sendMessage($chatId, $response, $keyboard = NULL) {
     $url = $GLOBALS['website'].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.urlencode($response);
     file_get_contents($url);
