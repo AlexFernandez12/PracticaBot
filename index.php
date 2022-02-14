@@ -28,9 +28,12 @@ switch($message) {
             sendMessage($chatId, $response);
             break;
         case '/ayuda':
-            $response = "Tranquilo, estoy contigo.";
-            $keyboard = '["Gracias"],["Pos Ok"]';
-            sendMessage($chatId, $response, $keyboard);
+            $inline_button1 = array("text"=>"Google url","url"=>"http://google.com");
+            $inline_button2 = array("text"=>"work plz","callback_data"=>'/plz');
+            $inline_keyboard = [[$inline_button1,$inline_button2]];
+            $keyboard=array("inline_keyboard"=>$inline_keyboard);
+            $replyMarkup = json_encode($keyboard); 
+            sendMessage($chatId, "ok", $keyboard);
             break;
         case '/noticias':
             getNoticias($chatId);
