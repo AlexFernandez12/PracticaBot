@@ -2,7 +2,6 @@
 $token = '5190510451:AAEB_CmkxY-VXdoB8Fkwznrb3SVb_8YKhHc';
 $website = 'https://api.telegram.org/bot'.$token;
 
-$token = '11345342......';
 $keyboard = json_encode([
     "inline_keyboard" => [
         [
