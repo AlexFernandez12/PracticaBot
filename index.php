@@ -16,7 +16,7 @@ switch($message) {
         $response = 'Hola! Soy @Alex19bot';
         sendMessage($chatId, $response);
         break;
-        case '/ayuda2':
+        case '/ayuda':
             $response = "Tranquilo, estoy contigo.";
             $keyboard = '["Gracias"],["Pos Ok"]';
             sendMessage($chatId, $response,$keyboard);
@@ -24,15 +24,6 @@ switch($message) {
         case '/noticias':
             getNoticias($chatId);
             break;
-
-            case "/add":
-                $str = $updates['message']['reply_to_message']['text'];
-                $insert = "INSERT INTO devolucion VALUES ('$str')";
-                mysql_query($conn,$insert);
-                sendMessage($chatId, $str);
-                echo "ok";
-                break;
-        }
     default:
         $response = 'No te he entendido';
         sendMessage($chatId, $response);
