@@ -13,7 +13,7 @@ switch($message) {
         sendMessage($chatId, $response);
         break;
         case '/help':
-            $response  = 'Los comandos disponibles son:' . PHP_EOL;
+            $response  = 'Los comandos disponibles son:';
             $response = '/start Inicializa el bot';
             $response = '/fecha Muestra la fecha actual';
             $response = '/hora Muestra la hora actual';
