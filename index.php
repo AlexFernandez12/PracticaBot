@@ -24,13 +24,22 @@ switch($message) {
         case '/noticias':
             getNoticias($chatId);
             break;
+
+            case "/add":
+                $str = $updates['message']['reply_to_message']['text'];
+                $insert = "INSERT INTO devolucion VALUES ('$str')";
+                mysql_query($conn,$insert);
+                sendMessage($chatId, $str);
+                echo "ok";
+                break;
+        }
     default:
         $response = 'No te he entendido';
         sendMessage($chatId, $response);
         break;
  
     }
-function sendMessage($chatId, $response, $keyboard = NULL) {
+function sendMessage($chatId, $response, $keyboard) {
     $url = $GLOBALS['website'].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.urlencode($response);
     file_get_contents($url);
     if (isset($keyboard)) {
