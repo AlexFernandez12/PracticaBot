@@ -28,19 +28,9 @@ switch($message) {
             sendMessage($chatId, $response);
             break;
         case '/ayuda':
-            $response = 'En que puedo ayudarle';
-            $keyboard = array(
-                "inline_keyboard" => array(
-                    array(
-                        array(
-                            "text" => "My Button Text", 
-                            "callback_data" => "myCallbackData"
-                        )
-                    )
-                )
-            );
-        
-            keyboard($chatId, "asadsd", $keyboard);
+            $response = "Tranquilo, estoy contigo.";
+            $keyboard = '["Gracias"],["Pos Ok"]';
+            sendMessage($chatId, $response, $keyboard);
             break;
         case '/noticias':
             getNoticias($chatId);
@@ -59,17 +49,6 @@ switch($message) {
         sendMessage($chatId, $response);
         break;
  
-    }
-
-
-    function keyboard($chatID, $text, $t){
-        $args = array(
-            "chat_id" => $chatID,
-            "text" => $text,
-            "parse_mode" => "HTML",
-            "reply_markup" => json_encode($t),
-        );
-        api("sendMessage?".http_build_query($args));        
     }
 
 
