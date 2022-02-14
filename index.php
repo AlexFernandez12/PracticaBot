@@ -2,28 +2,9 @@
 $token = '5190510451:AAEB_CmkxY-VXdoB8Fkwznrb3SVb_8YKhHc';
 $website = 'https://api.telegram.org/bot'.$token;
 
-$keyboard = json_encode([
-    "inline_keyboard" => [
-        [
-            [
-                "text" => "Button 1",
-                "callback_data" => "1"
-            ],
-            [
-                "text" => "Button 2",
-                "callback_data" => "2"
-            ]
-        ]
-    ]
-]);
-
-$data = http_build_query([
-    'text' => 'your message here',
-    'chat_id' => '@channelname'
-]);
-
-$url = "https://api.telegram.org/bot$token/sendMessage?{$data}&reply_markup={$keyboard}";
-$res = @file_get_contents($url);
+$keyboard = array(
+    "inline_keyboard" => array(array(array("text" => "Your Buton Name", "url" => "Your Url")))
+);
 
 
 
@@ -56,12 +37,11 @@ switch($message) {
             sendMessage($chatId, $response);
             break;
         case '/ayuda':
-            $inline_button1 = array("text"=>"Google url","url"=>"http://google.com");
-            $inline_button2 = array("text"=>"work plz","callback_data"=>'/plz');
-            $inline_keyboard = [[$inline_button1,$inline_button2]];
-            $keyboard=array("inline_keyboard"=>$inline_keyboard);
-            $replyMarkup = json_encode($keyboard); 
-            sendMessage($chatId, "ok", $replyMarkup);
+            $keyboard = json_encode($keyboard, true);
+
+$sendto = "https://api.telegram.org/bot$token/sendmessage?chat_id=".$chatID."&text=".$reply."&parse_mode=HTML&reply_markup=".$keyboard;
+
+file_get_contents($sendto);
             break;
         case '/noticias':
             getNoticias($chatId);
