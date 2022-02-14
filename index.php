@@ -29,7 +29,7 @@ switch($message) {
             break;
         case '/ayuda':
             $response = "Tranquilo, estoy contigo.";
-            $keyboard = ["Hola", "Adios"]
+            $keyboard = ["Hola", "Adios"];
             sendMessage($chatId, $response, $keyboard);
             break;
         case '/noticias':
