@@ -13,11 +13,11 @@ switch($message) {
         sendMessage($chatId, $response);
         break;
         case '/help':
-            $response  = 'Los comandos disponibles son:';
-            $response = '/start Inicializa el bot';
-            $response = '/fecha Muestra la fecha actual';
-            $response = '/hora Muestra la hora actual';
-            $response = '/help Muestra esta ayuda';
+            $response  = 'Los comandos disponibles son:
+            /start Inicializa el bot
+            /fecha Muestra la fecha actual
+            /hora Muestra la hora actual
+            /help Muestra esta ayuda';
             sendMessage($chatId, $response);
             break;
     case 'Hola':
