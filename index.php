@@ -79,11 +79,11 @@ function redes(){
 
 
 
-function sendMessage($chatId, $response, $keyboard = NULL) {
+function sendMessage($chatId, $response, $keyboard = TRUE) {
     if (isset($keyboard)) {
 		$teclado = '&reply_markup={"keyboard":['.$keyboard.'], "resize_keyboard":true, "one_time_keyboard":true}';
 	}
-	$url = $GLOBALS[website].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.urlencode($response).$teclado;
+	$url = $GLOBALS['website'].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.urlencode($response).$teclado;
 	file_get_contents($url);
 }
  
