@@ -1,6 +1,35 @@
 <?php
 $token = '5190510451:AAEB_CmkxY-VXdoB8Fkwznrb3SVb_8YKhHc';
 $website = 'https://api.telegram.org/bot'.$token;
+
+$token = '11345342......';
+$keyboard = json_encode([
+    "inline_keyboard" => [
+        [
+            [
+                "text" => "Button 1",
+                "callback_data" => "1"
+            ],
+            [
+                "text" => "Button 2",
+                "callback_data" => "2"
+            ]
+        ]
+    ]
+]);
+
+$data = http_build_query([
+    'text' => 'your message here',
+    'chat_id' => '@channelname'
+]);
+
+$url = "https://api.telegram.org/bot$token/sendMessage?{$data}&reply_markup={$keyboard}";
+$res = @file_get_contents($url);
+
+
+
+
+
  
 $input = file_get_contents('php://input');
 $update = json_decode($input, TRUE);
