@@ -33,7 +33,7 @@ switch($message) {
             $inline_keyboard = [[$inline_button1,$inline_button2]];
             $keyboard=array("inline_keyboard"=>$inline_keyboard);
             $replyMarkup = json_encode($keyboard); 
-            sendMessage($chatId, "ok", $keyboard);
+            sendMessage($chatId, "ok", $replyMarkup);
             break;
         case '/noticias':
             getNoticias($chatId);
