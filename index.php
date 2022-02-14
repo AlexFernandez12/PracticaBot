@@ -2,14 +2,6 @@
 $token = '5190510451:AAEB_CmkxY-VXdoB8Fkwznrb3SVb_8YKhHc';
 $website = 'https://api.telegram.org/bot'.$token;
 
-$keyboard = array(
-    "inline_keyboard" => array(array(array("text" => "Your Buton Name", "url" => "Your Url")))
-);
-
-
-
-
-
  
 $input = file_get_contents('php://input');
 $update = json_decode($input, TRUE);
@@ -37,11 +29,18 @@ switch($message) {
             sendMessage($chatId, $response);
             break;
         case '/ayuda':
-            $keyboard = json_encode($keyboard, true);
-
-$sendto = "https://api.telegram.org/bot$token/sendmessage?chat_id=".$chatID."&text=".$reply."&parse_mode=HTML&reply_markup=".$keyboard;
-
-file_get_contents($sendto);
+            $teclado = array(
+                "inline_keyboard" => array(array(array(
+                "texto" => "boton",
+                "callback_data" => "button_0"
+                )))
+                );
+                $postfields = array(
+                'chat_id' => "$chat_id",
+                'texto' => "$respuesta",
+                'reply_markup' => json_encode($teclado)
+                );
+                
             break;
         case '/noticias':
             getNoticias($chatId);
