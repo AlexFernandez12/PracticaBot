@@ -29,8 +29,8 @@ switch($message) {
             break;
         case '/ayuda':
             $response = "Tranquilo, estoy contigo.";
-            $keyboard = ["Hola", "Adios"];
-            sendMessage($chatId, $response, $keyboard);
+            $teclado = ["Hola", "Adios"];
+            sendMessage($chatId, $response, $teclado);
             break;
         case '/noticias':
             getNoticias($chatId);
@@ -56,11 +56,11 @@ switch($message) {
 
 
 
-function sendMessage($chatId, $response, $keyboard = NULL) {
+function sendMessage($chatId, $response, $teclado) {
     $url = $GLOBALS['website'].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.urlencode($response);
     file_get_contents($url);
 
-        $teclado = '&reply_markup={"keyboard":['.$keyboard.'], "resize_keyboard":true, "one_time_keyboard":true}';
+    $teclado = '&reply_markup={"keyboard":['.$keyboard.'], "resize_keyboard":true, "one_time_keyboard":true}';
     
 }
  
