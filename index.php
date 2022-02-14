@@ -28,8 +28,26 @@ switch($message) {
             sendMessage($chatId, $response);
             break;
         case '/ayuda':
-            $response = "Tranquilo, estoy contigo.";
-            $keyboard = '["Gracias"],["Pos Ok"]';
+            $keyboard = [
+                ['7', '8', '9'],
+                ['4', '5', '6'],
+                ['1', '2', '3'],
+                     ['0']
+            ];
+            
+            $reply_markup = $telegram->replyKeyboardMarkup([
+                'keyboard' => $keyboard, 
+                'resize_keyboard' => true, 
+                'one_time_keyboard' => true
+            ]);
+            
+            $response = $telegram->sendMessage([
+                'chat_id' => 'CHAT_ID', 
+                'text' => 'Hello World', 
+                'reply_markup' => $reply_markup
+            ]);
+            
+            $messageId = $response->getMessageId();
             sendMessage($chatId, $response, $keyboard);
             break;
         case '/noticias':
@@ -56,9 +74,7 @@ switch($message) {
 function sendMessage($chatId, $response, $keyboard = TRUE) {
     $url = $GLOBALS['website'].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.urlencode($response);
     file_get_contents($url);
-    if (isset($keyboard)) {
-        $teclado = '&reply_markup={"keyboard":['.$keyboard.'], "resize_keyboard":true, "one_time_keyboard":true}';
-    }
+    
 }
  
 function getNoticias($chatId){
