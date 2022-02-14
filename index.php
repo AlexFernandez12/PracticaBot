@@ -18,7 +18,6 @@ switch($message) {
             $response = '/fecha Muestra la fecha actual';
             $response = '/hora Muestra la hora actual';
             $response = '/help Muestra esta ayuda';
-            $response = null;
             sendMessage($chatId, $response);
             break;
     case 'Hola':
