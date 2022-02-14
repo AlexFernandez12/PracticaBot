@@ -32,7 +32,7 @@ switch($message) {
             $teclado = array(
                 "inline_keyboard" => array(array(array(
                 "texto" => "boton",
-                "callback_data" => "button"
+                "callback_data" => "button_0"
                 )))
                 );
                 $postfields = array(
