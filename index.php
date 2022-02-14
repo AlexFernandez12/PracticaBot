@@ -15,15 +15,18 @@ switch($message) {
         case '/help':
             $response  = 'Los comandos disponibles son:
             /start Inicializa el bot
+            /saludo Presentacion del bot
+            /ayuda Te ofrece apoyo
+            /noticias Muestra noticias acerca de futbol
             /fecha Muestra la fecha actual
             /hora Muestra la hora actual
             /help Muestra esta ayuda';
             sendMessage($chatId, $response);
             break;
-    case 'Hola':
-        $response = 'Hola! Soy @Alex19bot';
-        sendMessage($chatId, $response);
-        break;
+        case '/saludo':
+            $response = 'Hola! Soy @Alex19bot';
+            sendMessage($chatId, $response);
+            break;
         case '/ayuda':
             $response = "Tranquilo, estoy contigo.";
             $keyboard = '["Gracias"],["Pos Ok"]';
@@ -50,9 +53,20 @@ switch($message) {
 function sendMessage($chatId, $response, $keyboard = NULL) {
     $url = $GLOBALS['website'].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.urlencode($response);
     file_get_contents($url);
-    if (isset($keyboard)) {
-        $teclado = '&reply_markup={"keyboard":['.$keyboard.'], "resize_keyboard":true, "one_time_keyboard":true}';
-    }
+    $keyboard = 'reply_markup' => array('inline_keyboard' => array(
+        //linha 1
+        array(
+            array('text'=>'Mega-Sena','url'=>'http://g1.globo.com/loterias/megasena.html'), //botão 1
+            array('text'=>'Quina','url'=>'http://g1.globo.com/loterias/quina.html')//botão 2
+         ),
+         //linha 2
+        array(
+            array('text'=>'Lotofácil','url'=>'http://g1.globo.com/loterias/lotofacil.html'), //botão 3
+            array('text'=>'Lotomania','url'=>'http://g1.globo.com/loterias/lotomania.html')//botão 4
+         )
+
+)
+)));
 }
  
 function getNoticias($chatId){
