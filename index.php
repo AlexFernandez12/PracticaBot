@@ -28,9 +28,22 @@ switch($message) {
             sendMessage($chatId, $response);
             break;
         case '/ayuda':
-            $response = "Tranquilo, estoy contigo.";
-            $keyboard = '["Gracias"],["Pos Ok"]';
-            sendMessage($chatId, $response, $keyboard);
+            sendMessage("sendMessage", array('chat_id' => $chatId, "text" => 'Olá, '. $message['from']['first_name'].
+		'! Escolha um dos jogos abaixo para ver o resultado diretamente no site do G1.', 
+		'reply_markup' => array('inline_keyboard' => array(
+                                                     //linha 1
+                                                     array(
+                                                         array('text'=>'Mega-Sena','url'=>'http://g1.globo.com/loterias/megasena.html'), //botão 1
+                                                         array('text'=>'Quina','url'=>'http://g1.globo.com/loterias/quina.html')//botão 2
+                                                      ),
+                                                      //linha 2
+                                                     array(
+                                                         array('text'=>'Lotofácil','url'=>'http://g1.globo.com/loterias/lotofacil.html'), //botão 3
+                                                         array('text'=>'Lotomania','url'=>'http://g1.globo.com/loterias/lotomania.html')//botão 4
+                                                      )
+
+                                        )
+                                )));
             break;
         case '/noticias':
             getNoticias($chatId);
