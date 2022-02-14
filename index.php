@@ -29,7 +29,7 @@ switch($message) {
             break;
         case '/ayuda':
             $response = "Tranquilo, estoy contigo.";
-            redes($chatId, $response, $url)
+            sendMessage($chatId, $response, $keyboard);
             break;
         case '/noticias':
             getNoticias($chatId);
@@ -50,29 +50,6 @@ switch($message) {
  
     }
 
-function redes($chatId, $response, $url){
-    $linkyt = "https://www.youtube.com/watch?v=abQaOAy9JlQ";
-    $linktw = "https://www.youtube.com/watch?v=abQaOAy9JlQ";
-
-
-    $listbtn =json_encode(
-        array(
-            "inline_keyboard"=>array(
-                array(
-                    array('text'=>'YOUTUBE', 'url'=>$linkyt),
-                    array('text'=>'TWITCH', 'url'=>$linktw),
-                ),
-            ),
-        )
-        );
-
-        $texto ="Redes Sociales:";
-        $url =$GLOBALS['website']."/sendMessage?chat_id=".$GLOBALS['chatId']."&text=".urlencode($response)."&reply_markup=".$listbtn;
-        file_get_contents($url);
-        return $url;
-}
-
-
 
 
 
@@ -81,9 +58,9 @@ function redes($chatId, $response, $url){
 function sendMessage($chatId, $response, $keyboard = NULL) {
     $url = $GLOBALS['website'].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.urlencode($response);
     file_get_contents($url);
-    if (isset($keyboard)) {
+
         $teclado = '&reply_markup={"keyboard":['.$keyboard.'], "resize_keyboard":true, "one_time_keyboard":true}';
-    }
+    
 }
  
 function getNoticias($chatId){
