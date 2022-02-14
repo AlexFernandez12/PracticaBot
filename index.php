@@ -24,6 +24,13 @@ switch($message) {
         case '/noticias':
             getNoticias($chatId);
             break;
+            case '/fecha':
+                $response  = 'La fecha actual es ' . date('d/m/Y');
+                break;
+        
+            case '/hora':
+                $response  = 'La hora actual es ' . date('H:i:s');
+            break;
     default:
         $response = 'No te he entendido';
         sendMessage($chatId, $response);
