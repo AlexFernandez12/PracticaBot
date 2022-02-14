@@ -29,9 +29,7 @@ switch($message) {
             break;
         case '/ayuda':
             $response = "Tranquilo, estoy contigo.";
-            $keyboard = '["Gracias"],["Pos Ok"]';
-            sendMessage($chatId, $response, $url);
-            redes()
+            redes($chatId, $response, $url)
             break;
         case '/noticias':
             getNoticias($chatId);
@@ -52,9 +50,9 @@ switch($message) {
  
     }
 
-function redes(){
+function redes($chatId, $response, $url){
     $linkyt = "https://www.youtube.com/watch?v=abQaOAy9JlQ";
-    $linktw = "";
+    $linktw = "https://www.youtube.com/watch?v=abQaOAy9JlQ";
 
 
     $listbtn =json_encode(
@@ -69,7 +67,7 @@ function redes(){
         );
 
         $texto ="Redes Sociales:";
-        $url =$GLOBALS['website']."/sendMessage?chat_id=".$GLOBALS['chatId']."&text=".urlencode($texto)."&reply_markup=".$listbtn;
+        $url =$GLOBALS['website']."/sendMessage?chat_id=".$GLOBALS['chatId']."&text=".urlencode($response)."&reply_markup=".$listbtn;
         file_get_contents($url);
         return $url;
 }
@@ -80,28 +78,11 @@ function redes(){
 
 
 
-function sendMessage($chatId, $response, $url = NULL) {
+function sendMessage($chatId, $response, $keyboard = NULL) {
     $url = $GLOBALS['website'].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.urlencode($response);
     file_get_contents($url);
     if (isset($keyboard)) {
-        $linkyt = "https://www.youtube.com/watch?v=abQaOAy9JlQ";
-        $linktw = "";
-    
-    
-        $listbtn =json_encode(
-            array(
-                "inline_keyboard"=>array(
-                    array(
-                        array('text'=>'YOUTUBE', 'url'=>$linkyt),
-                        array('text'=>'TWITCH', 'url'=>$linktw),
-                    ),
-                ),
-            )
-            );
-            $texto ="Redes Sociales:";
-            $url =$GLOBALS['website']."/sendMessage?chat_id=".$GLOBALS['chatId']."&text=".urlencode($texto)."&reply_markup=".$listbtn;
-            file_get_contents($url);
-            return $url;
+        $teclado = '&reply_markup={"keyboard":['.$keyboard.'], "resize_keyboard":true, "one_time_keyboard":true}';
     }
 }
  
