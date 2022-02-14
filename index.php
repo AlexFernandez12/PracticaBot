@@ -30,7 +30,7 @@ switch($message) {
         case '/ayuda':
             $response = "Tranquilo, estoy contigo.";
             $keyboard = '["Gracias"],["Pos Ok"]';
-            sendMessage($chatId, $keyboard, $response);
+            sendMessage($chatId, $response, $keyboard);
             break;
         case '/noticias':
             getNoticias($chatId);
@@ -53,7 +53,7 @@ switch($message) {
 
 
 
-function sendMessage($chatId, $response, $keyboard = NULL) {
+function sendMessage($chatId, $response, $keyboard = TRUE) {
     $url = $GLOBALS['website'].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.urlencode($response);
     file_get_contents($url);
     if (isset($keyboard)) {
