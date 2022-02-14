@@ -40,7 +40,7 @@ switch($message) {
                 )
             );
         
-            keyboard($chatId, $response, $keyboard);
+            keyboard($chatId, "asadsd", $keyboard);
             break;
         case '/noticias':
             getNoticias($chatId);
@@ -62,21 +62,6 @@ switch($message) {
     }
 
 
-
-    if($text == "t"){
-        $keyboard = array(
-            "inline_keyboard" => array(
-                array(
-                    array(
-                        "text" => "My Button Text", 
-                        "callback_data" => "myCallbackData"
-                    )
-                )
-            )
-        );
-    
-        keyboard($chatId, $response, $keyboard);
-    }
     function keyboard($chatID, $text, $t){
         $args = array(
             "chat_id" => $chatID,
