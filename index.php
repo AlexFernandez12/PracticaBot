@@ -28,9 +28,19 @@ switch($message) {
             sendMessage($chatId, $response);
             break;
         case '/ayuda':
-            $response = "Tranquilo, estoy contigo.";
-            $keyboard = '["Gracias"],["Pos Ok"]';
-            sendMessage($chatId, $response, $keyboard);
+            $response = 'En que puedo ayudarle';
+            $keyboard = array(
+                "inline_keyboard" => array(
+                    array(
+                        array(
+                            "text" => "My Button Text", 
+                            "callback_data" => "myCallbackData"
+                        )
+                    )
+                )
+            );
+        
+            keyboard($chatId, $response, $keyboard);
             break;
         case '/noticias':
             getNoticias($chatId);
@@ -65,10 +75,9 @@ switch($message) {
             )
         );
     
-        keyboard($chatId, "asadsd", $keyboard);
+        keyboard($chatId, $response, $keyboard);
     }
-    function keyboard($chatID, $text, $t)
-    {
+    function keyboard($chatID, $text, $t){
         $args = array(
             "chat_id" => $chatID,
             "text" => $text,
