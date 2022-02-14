@@ -69,7 +69,7 @@ function redes(){
         );
 
         $texto ="Redes Sociales:";
-        $url =$GLOBALS[website]."/sendMessage?chat_id=".$GLOBALS[chatId]."&text=".urlencode($texto)."&reply_markup=".$listbtn;
+        $url =$GLOBALS['website']."/sendMessage?chat_id=".$GLOBALS['chatId']."&text=".urlencode($texto)."&reply_markup=".$listbtn;
         file_get_contents($url);
         return $url;
 }
