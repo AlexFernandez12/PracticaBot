@@ -28,27 +28,9 @@ switch($message) {
             sendMessage($chatId, $response);
             break;
         case '/ayuda':
-            $response = [
-                'text' => 'choose options yes or no', 
-                'chat_id' => '-100234234234'
-              ];
-    
-    $keyboard = array(
-        "inline_keyboard" => array(
-            array(
-                array(
-                    "text" => "Yes",
-                    "callback_data" => "myCallbackData"
-                ),
-                array(
-                    "text" => "No",
-                    "callback_data" => "myCallbackData"
-                )
-            )
-        )
-    
-    file_get_contents("https://api.telegram.org/bot$token/sendMessage?" . http_build_query($data) . "&parse_mode=html&reply_markup=$keyboard");
-    sendMessage($chatId, $response);
+            $response = "Tranquilo, estoy contigo.";
+            $keyboard = '["Gracias"],["Pos Ok"]';
+            sendMessage($chatId, $response,$keyboard = NULL);
             break;
         case '/noticias':
             getNoticias($chatId);
