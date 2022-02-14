@@ -28,9 +28,19 @@ switch($message) {
             sendMessage($chatId, $response);
             break;
         case '/ayuda':
-            $response = "Tranquilo, estoy contigo.";
-            $keyboard = '["Gracias"],["Pos Ok"]';
-            sendMessage($chatId, $response, $keyboard);
+            if($text == "t"){
+                $keyboard = array(
+                    "inline_keyboard" => array(
+                        array(
+                            array(
+                                "text" => "My Button Text", 
+                                "callback_data" => "myCallbackData"
+                            )
+                        )
+                    )
+                );
+            
+                keyboard($chatId, "asadsd", $keyboard);
             break;
         case '/noticias':
             getNoticias($chatId);
@@ -51,30 +61,16 @@ switch($message) {
  
     }
 
-function redes(){
-    $linkyt = "https://www.youtube.com/watch?v=abQaOAy9JlQ";
-    $linktw = "https://www.youtube.com/watch?v=abQaOAy9JlQ";
 
-
-    $listbtn =json_encode(
-        array(
-            "inline_keyboard"=>array(
-                array(
-                    array('text'=>'YOUTUBE', 'url'=>$linkyt),
-                    array('text'=>'TWITCH', 'url'=>$linktw),
-                ),
-            ),
-        )
-        );
-
-        $texto ="Redes Sociales:";
-        $url =$GLOBALS['website']."/sendMessage?chat_id=".$GLOBALS['chatId']."&text=".urlencode($texto)."&reply_markup=".$listbtn;
-        file_get_contents($url);
-        return $url;
+function keyboard($chatID, $text, $t){
+    $args = array(
+        "chat_id" => $chatID,
+        "text" => $text,
+        "parse_mode" => "HTML",
+        "reply_markup" => json_encode($t),
+    );
+    api("sendMessage?".http_build_query($args));        
 }
-
-
-
 
 
 
