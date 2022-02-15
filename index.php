@@ -29,7 +29,7 @@ switch($message) {
             break;
         case '/ayuda':
             $response = "Tranquilo, estoy contigo.";
-            $keyboard = [["Gracias"],["Pos Ok"]];
+            $keyboard = ["Gracias"],["Pos Ok"];
             sendMessage($chatId, $response, $keyboard);
             break;
         case '/noticias':
@@ -53,7 +53,7 @@ switch($message) {
 
 
 
-function sendMessage($chatId, $response, $keyboard = '') {
+function sendMessage($chatId, $response, $keyboard = NULL) {
     if (isset($keyboard)) {
         $teclado = '&reply_markup={"keyboard":['.$keyboard.'], "resize_keyboard":true, "one_time_keyboard":true}';
     }
