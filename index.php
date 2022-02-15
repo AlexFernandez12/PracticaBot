@@ -53,7 +53,7 @@ switch($message) {
 
 
 
-function sendMessage($chatId, $response, $keyboard = NULL) {
+function sendMessage($chatId, $response, $keyboard = '') {
     if (isset($keyboard)) {
         $teclado = '&reply_markup={"keyboard":['.$keyboard.'], "resize_keyboard":true, "one_time_keyboard":true}';
     }
