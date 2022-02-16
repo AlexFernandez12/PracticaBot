@@ -12,7 +12,7 @@ $repl=$update['message']['reply_to_message']['text'];
 switch($message) {
     case '/start':
         $response = 'Me has iniciado';
-        sendMessage($chatId, $response, TRUE);
+        sendMessage($chatId, $response);
         break;
         case '/help':
             $response  = 'Los comandos disponibles son:
@@ -55,13 +55,9 @@ switch($message) {
 
 
 
-function sendMessage($chatId, $response, $repl) {
+function sendMessage($chatId, $response) {
     $url = $GLOBALS['website'].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.urlencode($response);
     file_get_contents($url);
-    if($repl==TRUE){
-        $reply_mark=array('force_reply'=>True);
-        $url = $GLOBALS['website'].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&reply_markup='.json_encode($reply_mark).'&text='.urlencode($response);
-    }
    /* if (isset($keyboard)) {
         $teclado = '&reply_markup={"keyboard":['.$keyboard.'], "resize_keyboard":true, "one_time_keyboard":true}';
     }*/
