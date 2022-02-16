@@ -7,6 +7,8 @@ $update = json_decode($input, TRUE);
  
 $chatId = $update['message']['chat']['id'];
 $message = $update['message']['text'];
+$repl=$update['message']['reply_to_message']['text'];
+
 switch($message) {
     case '/start':
         $response = 'Me has iniciado';
@@ -29,7 +31,7 @@ switch($message) {
             break;
         case '/ayuda':
             $response = "Tranquilo, estoy contigo.";
-            $keyboard = '["https://www.youtube.com/"],["Pos Ok"],["Pos Ok"]';
+            $keyboard = ["https://www.youtube.com/"],["Pos Ok"],["Pos Ok"]za ;
             sendMessage($chatId, $response, $keyboard);
             break;
         case '/noticias':
@@ -53,13 +55,17 @@ switch($message) {
 
 
 
-function sendMessage($chatId, $response, $keyboard = '') {
-    $url = $GLOBALS['website'].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.urlencode($response).$teclado;
-    file_get_contents($url);
-    if (isset($keyboard)) {
-        $teclado = '&reply_markup={"keyboard":['.$keyboard.'], "resize_keyboard":true, "one_time_keyboard":true}';
+    function sendMessage($chatId, $response, $repl) {
+        if($repl==TRUE){
+            $reply_mark=array('force_reply'=>True);
+            $url = $GLOBALS['website'].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&reply_markup='.json_encode($reply_mark).'&text='.urlencode($response);
+        }
+        else $url = $GLOBALS['website'].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.urlencode($response);
+        file_get_contents($url);
     }
-}
+     
+     
+    
  
 function getNoticias($chatId){
  
