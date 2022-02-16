@@ -6,11 +6,58 @@ $input = file_get_contents('php://input');
 $update = json_decode($input, TRUE);
 
  
+
 $chatId = $update['message']['chat']['id'];
 $message = $update['message']['text'];
 $repl=$update['message']['reply_to_message']['text'];
 
 switch($message) {
+    case '/start':
+        $response = 'Me has iniciado';
+        sendMessage($chatId, $response, TRUE);
+        break;
+    case '/info':
+        $response = 'Hola! Soy @Victorvm_bot';
+        sendMessage($chatId, $response, TRUE);
+        break;
+        case 'Hola':
+            $response = 'Hola! Soy el bot de Victor😉';
+            sendMessage($chatId, $response, TRUE);
+            break;
+            case '/noticias':
+            getNoticias($chatId,TRUE);
+            break;
+            case '/fecha':
+                $response  = 'La fecha actual es ' . date('d/m/Y');
+                sendMessage($chatId, $response,TRUE);
+                break;
+       
+            case '/hora':
+                $response  = 'La hora actual es ' . date('H:i:s');
+                sendMessage($chatId, $response,TRUE);
+            break;
+            case '/help':
+                $response  = 'Los comandos disponibles son:
+                /start Inicia el bot 🤖
+                /fecha Muestra la fecha actual 📆
+                /hora Muestra la hora actual ⌚
+                /info Informacion del bot 🤖
+                /noticias Muestra la informacion del tenis del dia 🎾
+                /help Muestra esta ayuda';
+                sendMessage($chatId, $response,TRUE);
+
+                break;
+                    
+        
+
+    default:
+        $response = 'No te he entendido';
+        sendMessage($chatId, $response,TRUE);
+        break;
+ 
+    }
+
+/*switch($message) {
     case '/start':
         $response = 'Me has iniciado';
         sendMessage($chatId, $response, TRUE);
@@ -34,7 +81,7 @@ switch($message) {
             $response = "Tranquilo, estoy contigo.";
             $keyboard = ["https://www.youtube.com/"],["Pos Ok"],["Pos Ok"];
             sendMessage($chatId, $response, $keyboard);
-            break;*/
+            break;
         case '/noticias':
             getNoticias($chatId);
             break;
@@ -63,7 +110,7 @@ switch($message) {
         }
         else $url = $GLOBALS['website'].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.urlencode($response);
         file_get_contents($url);
-    }
+    }*/
     
  
 function getNoticias($chatId){
