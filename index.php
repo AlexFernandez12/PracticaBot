@@ -4,9 +4,12 @@ $website = 'https://api.telegram.org/bot'.$token;
  
 $input = file_get_contents('php://input');
 $update = json_decode($input, TRUE);
+
  
 $chatId = $update['message']['chat']['id'];
 $message = $update['message']['text'];
+$repl=$update['message']['reply_to_message']['text'];
+
 switch($message) {
     case '/start':
         $response = 'Me has iniciado';
