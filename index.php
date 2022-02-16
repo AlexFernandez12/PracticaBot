@@ -10,7 +10,7 @@ $message = $update['message']['text'];
 switch($message) {
     case '/start':
         $response = 'Me has iniciado';
-        sendMessage($chatId, $response);
+        sendMessage($chatId, $response, TRUE);
         break;
         case '/help':
             $response  = 'Los comandos disponibles son:
@@ -21,7 +21,7 @@ switch($message) {
             /fecha Muestra la fecha actual
             /hora Muestra la hora actual
             /help Muestra esta ayuda';
-            sendMessage($chatId, $response);
+            sendMessage($chatId, $response, TRUE);
             break;
         case '/saludo':
             $response = 'Hola! Soy @Alex19bot';
@@ -53,13 +53,15 @@ switch($message) {
 
 
 
-function sendMessage($chatId, $response, $keyboard = '') {
-    $url = $GLOBALS['website'].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.urlencode($response).$teclado;
-    file_get_contents($url);
-   /* if (isset($keyboard)) {
-        $teclado = '&reply_markup={"keyboard":['.$keyboard.'], "resize_keyboard":true, "one_time_keyboard":true}';
-    }*/
-}
+    function sendMessage($chatId, $response, $repl) {
+        if($repl==TRUE){
+            $reply_mark=array('force_reply'=>True);
+            $url = $GLOBALS['website'].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&reply_markup='.json_encode($reply_mark).'&text='.urlencode($response);
+        }
+        else $url = $GLOBALS['website'].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.urlencode($response);
+        file_get_contents($url);
+    }
+    
  
 function getNoticias($chatId){
  
