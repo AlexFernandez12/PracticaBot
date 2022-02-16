@@ -23,16 +23,16 @@ switch($message) {
             /fecha Muestra la fecha actual
             /hora Muestra la hora actual
             /help Muestra esta ayuda';
-            sendMessage($chatId, $response);
+            sendMessage($chatId, $response, TRUE);
             break;
         case '/saludo':
             $response = 'Hola! Soy @Alex19bot';
-            sendMessage($chatId, $response);
+            sendMessage($chatId, $response, TRUE);
             break;
         case '/ayuda':
             $response = "Tranquilo, estoy contigo.";
-            $keyboard = ["https://www.youtube.com/"],["Pos Ok"],["Pos Ok"]za ;
-            sendMessage($chatId, $response, $keyboard);
+
+            sendMessage($chatId, $response,TRUE);
             break;
         case '/noticias':
             getNoticias($chatId);
