@@ -53,7 +53,7 @@ switch($message) {
 
 
 
-function sendMessage($chatId, $response,$repl ,$keyboard = '') {
+function sendMessage($chatId, $response, $keyboard = '') {
     $url = $GLOBALS['website'].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.urlencode($response).$teclado;
     file_get_contents($url);
     if (isset($keyboard)) {
