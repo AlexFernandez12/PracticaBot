@@ -14,7 +14,7 @@ $repl=$update['message']['reply_to_message']['text'];
 switch($message) {
     case '/start':
         $response = 'Me has iniciado';
-        sendMessage($chatId, $response);
+        sendMessage($chatId, $response, TRUE);
         break;
         case '/help':
             $response  = 'Los comandos disponibles son:
