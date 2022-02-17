@@ -15,6 +15,20 @@ switch($message) {
     case '/start':
         $response = 'Me has iniciado';
         sendMessage($chatId, $response, TRUE);
+
+        switch($message == '/start'){
+            case 'Hola';
+            sendMessage($chatId, $response, FALSE);
+            break;
+            case 'Adios':
+                $response  = 'La hora actual es ' . date('H:i:s');
+                sendMessage($chatId, $response, FALSE);
+            break;
+            default:
+            $response = 'No te he entendido';
+            sendMessage($chatId, $response, FALSE);
+            break;
+            }
         break;
         case '/help':
             $response  = 'Los comandos disponibles son:
@@ -70,19 +84,7 @@ switch($message) {
  
     }
 
-    switch($message == '/start'){
-        case 'Hola';
-        sendMessage($chatId, $response, FALSE);
-        break;
-        case 'Adios':
-            $response  = 'La hora actual es ' . date('H:i:s');
-            sendMessage($chatId, $response, FALSE);
-        break;
-        default:
-        $response = 'No te he entendido';
-        sendMessage($chatId, $response, FALSE);
-        break;
-        }
+   
 
 
     
