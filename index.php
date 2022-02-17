@@ -3,32 +3,6 @@ $token = '5190510451:AAEB_CmkxY-VXdoB8Fkwznrb3SVb_8YKhHc';
 $website = 'https://api.telegram.org/bot'.$token;
 
 
-
-$teclado = array(
-"inline_keyboard" => array(array(array(
-"texto" => "boton",
-"callback_data" => "button_0"
-)))
-);
-$postfields = array(
-'chat_id' => "$chat_id",
-'texto' => "$respuesta",
-'reply_markup' => json_encode($teclado)
-);
-
-if (!$curld = curl_init()) {
-salir;
-}
-
-curl_setopt($rizo, CURLOPT_POST, verdadero);
-curl_setopt($curva, CURLOPT_POSTFIELDS, $postfields);
-curl_setopt($rizo, CURLOPT_URL,$website);
-curl_setopt($curld, CURLOPT_RETURNTRANSFER, verdadero);
-
-$salida = curl_exec($curld);
-
-curl_close ($rizo);
- 
 $input = file_get_contents('php://input');
 $update = json_decode($input, TRUE);
  
@@ -56,11 +30,11 @@ switch($message) {
             $response = 'Hola! Soy @Alex19bot';
             sendMessage($chatId, $response);
             break;
-      /*  case '/ayuda':
+        case '/ayuda':
             $response = "Tranquilo, estoy contigo.";
-            $keyboard = ["https://www.youtube.com/"],["Pos Ok"],["Pos Ok"];
-            sendMessage($chatId, $response, $keyboard);
-            break;*/
+            $teclado = ["https://www.youtube.com/"],["Pos Ok"],["Pos Ok"];
+            sendMessage($chatId, $response, $teclado);
+            break;
         case '/noticias':
             getNoticias($chatId);
             break;
@@ -82,12 +56,16 @@ switch($message) {
 
 
 
-function sendMessage($chatId, $response) {
+function sendMessage($chatId, $response, $teclado='') {
     $url = $GLOBALS['website'].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.urlencode($response);
     file_get_contents($url);
 
-  
-
+    $teclado = array(
+        "inline_keyboard" => array(array(array(
+        "texto" => "boton",
+        "callback_data" => "button_0"
+        )))
+        );
 }
 /*
 function sendMessage($chatId, $response, $repl) {
