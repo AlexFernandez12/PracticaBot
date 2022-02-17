@@ -54,13 +54,13 @@ switch($message) {
             sendMessage($chatId, $response, $teclado);
             break;*/
         case '/noticias':
-            getNoticias($chatId, $buscar);
+            getNoticias($chatId, 1);
             break;
             case 'futbol';
-            getNoticias($chatId, $buscar);
+            getNoticias($chatId, 2);
           break;
           case 'tenis':
-            getNoticias($chatId, $buscar);
+            getNoticias($chatId, 3);
         break;
             case '/fecha':
                 $response  = 'La fecha actual es ' . date('d/m/Y');
@@ -109,13 +109,13 @@ function getNoticias($chatId, $buscar){
  
     $context = stream_context_create(array('https' =>  array('header' => 'Accept: application/xml')));
     switch($buscar){
-    case 'barca';
+    case 1;
     $url = "https://e00-marca.uecdn.es/rss/futbol/barcelona.xml";
     break;
-    case 'granada';
+    case 2;
     $url = "https://e00-marca.uecdn.es/rss/futbol/granada.xml"
     break;
-    case 'valencia';
+    case 3;
     $url = "https://e00-marca.uecdn.es/rss/futbol/valencia.xml"
     break;
     }
