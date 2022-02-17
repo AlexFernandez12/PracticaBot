@@ -9,6 +9,27 @@ $chatId = $update['message']['chat']['id'];
 $message = $update['message']['text'];
 $repl=$update['message']['reply_to_message']['text'];
 
+if ((strpos($message, "adios") === 0)||(strpos($message, "hola") === 0)){
+    $response = "Hello !";
+
+    $keyboard = [
+    'inline_keyboard' => [
+        [
+            ['text' => 'COMMANDS', 'callback_data' => 'someString']
+        ]
+    ]
+];
+$encodedKeyboard = json_encode($keyboard);
+$parameters = 
+    array(
+        'chat_id' => $chatId, 
+        'text' => $response, 
+        'reply_markup' => $encodedKeyboard
+    );
+
+send('sendMessage', $parameters);
+}
+
 switch($message) {
     case '/start':
         $response = 'Me has iniciado';
@@ -54,34 +75,12 @@ switch($message) {
     }
 
 
-    $keyboard = [
-        'inline_keyboard' => [
-        [
-        ['text' => 'Some text', 'callback_data' => 'the data are sent to webhook when a user clicks on the button']
-        ]
-        ]
-        ];
-        $encodedKeyboard = json_encode($keyboard);
-        file_get_contents($website . "/sendmessage?chat_id=" . $chatId . "&text=" . $welcomemessage . "&reply_markup=" . $encodedKeyboard);
-
-
-
-
-
 
 function sendMessage($chatId, $response, $keyboard='') {
     $url = $GLOBALS['website'].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.urlencode($response);
     file_get_contents($url);
 
-    $keyboard = [
-        'inline_keyboard' => [
-        [
-        ['text' => 'Some text', 'callback_data' => 'the data are sent to webhook when a user clicks on the button']
-        ]
-        ]
-        ];
-        $encodedKeyboard = json_encode($keyboard);
-        file_get_contents($website . "/sendmessage?chat_id=" . $chatId . "&text=" . $welcomemessage . "&reply_markup=" . $encodedKeyboard);
+  
 
 }
 /*
