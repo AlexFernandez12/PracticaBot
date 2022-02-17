@@ -56,9 +56,12 @@ switch($message) {
         case '/noticias':
             getNoticias($chatId);
             break;
-            case 'Futbol';
-        $response  = 'futbol';
-        getNoticias($chatId);
+            case 'futbol';
+         getNoticias($chatId);
+          break;
+          case 'tenis':
+            $response  = 'tenis ';
+            sendMessage($chatId, $response, FALSE);
         break;
             case '/fecha':
                 $response  = 'La fecha actual es ' . date('d/m/Y');
@@ -76,18 +79,7 @@ switch($message) {
  
     }
 
-    switch($message){
-    
-        case 'tenis':
-            $response  = 'tenis ';
-            sendMessage($chatId, $response, FALSE);
-        break;
-        default:
 
-        break;
-  
- 
-    }
 
 
     
