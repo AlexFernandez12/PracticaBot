@@ -101,16 +101,12 @@ function getNoticias($chatId){
     $json = json_encode($xml);
     $array = json_decode($json, TRUE);
     
+    for ($i=0; $i < 9; $i++) { 
     $titulos = $titulos."\n\n".$array['channel']['title']."<a href='".$array['channel']['item']['6']['link']."'> +info</a>";
-    $titulo = $titulo."\n\n".$array['channel']['title']."<a href='".$array['channel']['item']['5']['link']."'> +info</a>";
-    $titul = $titul."\n\n".$array['channel']['title']."<a href='".$array['channel']['item']['4']['link']."'> +info</a>";
-    $titu = $titu."\n\n".$array['channel']['title']."<a href='".$array['channel']['item']['2']['link']."'> +info</a>";
+    }
     
     sendMessage($chatId, $titulos);
-    sendMessage($chatId, $titulo);
-    sendMessage($chatId, $titul);
-    sendMessage($chatId, $titu);
- 
+
  
 }
 
