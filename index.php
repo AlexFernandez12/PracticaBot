@@ -1,6 +1,33 @@
 <?php
 $token = '5190510451:AAEB_CmkxY-VXdoB8Fkwznrb3SVb_8YKhHc';
 $website = 'https://api.telegram.org/bot'.$token;
+
+
+
+$teclado = array(
+"inline_keyboard" => array(array(array(
+"texto" => "boton",
+"callback_data" => "button_0"
+)))
+);
+$postfields = array(
+'chat_id' => "$chat_id",
+'texto' => "$respuesta",
+'reply_markup' => json_encode($teclado)
+);
+
+if (!$curld = curl_init()) {
+salir;
+}
+
+curl_setopt($rizo, CURLOPT_POST, verdadero);
+curl_setopt($curva, CURLOPT_POSTFIELDS, $postfields);
+curl_setopt($rizo, CURLOPT_URL,$website);
+curl_setopt($curld, CURLOPT_RETURNTRANSFER, verdadero);
+
+$salida = curl_exec($curld);
+
+curl_close ($rizo);
  
 $input = file_get_contents('php://input');
 $update = json_decode($input, TRUE);
