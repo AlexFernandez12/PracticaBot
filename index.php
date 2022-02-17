@@ -54,14 +54,13 @@ switch($message) {
             sendMessage($chatId, $response, $teclado);
             break;*/
         case '/noticias':
-            getNoticias($chatId);
+            getNoticias($chatId, $buscar);
             break;
             case 'futbol';
-         getNoticias($chatId);
+            getNoticias($chatId, $buscar);
           break;
           case 'tenis':
-            $response  = 'tenis ';
-            sendMessage($chatId, $response, FALSE);
+            getNoticias($chatId, $buscar);
         break;
             case '/fecha':
                 $response  = 'La fecha actual es ' . date('d/m/Y');
@@ -104,12 +103,22 @@ function sendMessage($chatId, $response, $repl) {
     file_get_contents($url);
 }
  */
-function getNoticias($chatId){
+function getNoticias($chatId, $buscar){
  
     //include("simple_html_dom.php");
  
     $context = stream_context_create(array('https' =>  array('header' => 'Accept: application/xml')));
+    switch($buscar){
+    case 'barca';
     $url = "https://e00-marca.uecdn.es/rss/futbol/barcelona.xml";
+    break;
+    case 'granada';
+    $url = "https://e00-marca.uecdn.es/rss/futbol/granada.xml"
+    break;
+    case 'valencia';
+    $url = "https://e00-marca.uecdn.es/rss/futbol/valencia.xml"
+    break;
+    }
     $xmlstring = file_get_contents($url, false, $context);
  
     $xml = simplexml_load_string($xmlstring, "SimpleXMLElement", LIBXML_NOCDATA);
@@ -120,7 +129,7 @@ function getNoticias($chatId){
     $titulos = $titulos."\n\n".$array['channel']['title']."<a href='".$array['channel']['item'][$i]['link']."'> +info</a>";
     }
     
-    sendMessage($chatId, $titulos);
+    sendMessage($chatId, $titulos, FALSE);
 
  
 }
