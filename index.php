@@ -13,23 +13,10 @@ $repl=$update['message']['reply_to_message']['text'];
 
 switch($message) {
     case '/start':
-        $response = 'Me has iniciado';
+        $response = 'Sobre que quieres las noticias';
         sendMessage($chatId, $response, TRUE);
 
-        switch($message){
-            case 'Hola';
-            $response  = 'eeee ';
-            sendMessage($chatId, $response, FALSE);
-            break;
-            case 'Adios':
-                $response  = 'eeee ';
-                sendMessage($chatId, $response, FALSE);
-            break;
-            default:
-            $response = 'No te he entendido';
-            sendMessage($chatId, $response, FALSE);
-            break;
-            }
+       
         break;
         case '/help':
             $response  = 'Los comandos disponibles son:
@@ -69,6 +56,13 @@ switch($message) {
         case '/noticias':
             getNoticias($chatId);
             break;
+            case 'futbol';
+         getNoticias($chatId);
+          break;
+          case 'tenis':
+            $response  = 'tenis ';
+            sendMessage($chatId, $response, FALSE);
+        break;
             case '/fecha':
                 $response  = 'La fecha actual es ' . date('d/m/Y');
                 sendMessage($chatId, $response, FALSE);
@@ -85,7 +79,7 @@ switch($message) {
  
     }
 
-   
+
 
 
     
