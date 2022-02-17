@@ -21,7 +21,7 @@ switch($message) {
             );
         $postfields = array(
             'chat_id' => "$chatId",
-            'texto' => "$message",
+            'texto' => "$response",
             'reply_markup' => json_encode($teclado)
             );
         
