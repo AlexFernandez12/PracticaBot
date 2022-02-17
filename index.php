@@ -21,11 +21,9 @@ switch($message) {
             );
         $postfields = array(
             'chat_id' => "$chatId",
-            'texto' => "$response",
+            'texto' => "$message",
             'reply_markup' => json_encode($teclado)
             );
-        
-            sendMessage($chatId, $response);
             break;
         case '/saludo':
             $response = 'Hola! Soy @Alex19bot';
