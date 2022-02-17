@@ -70,12 +70,18 @@ switch($message) {
  
     }
 
-    if($message == 'hola'){
-        $response = 'Hola';
+    switch($message == '/start'){
+        case 'Hola';
         sendMessage($chatId, $response, FALSE);
-        }else{
-            $response = 'Bye';
+        break;
+        case 'Adios':
+            $response  = 'La hora actual es ' . date('H:i:s');
             sendMessage($chatId, $response, FALSE);
+        break;
+        default:
+        $response = 'No te he entendido';
+        sendMessage($chatId, $response, FALSE);
+        break;
         }
 
 
