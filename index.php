@@ -32,6 +32,7 @@ switch($message) {
             sendMessage($chatId, $response);
             break;
             case '/enlaces':
+                $response = 'Selecciona uno';
                 $keyboard = {
                   'inline_keyboard': [
                     [{
@@ -43,7 +44,7 @@ switch($message) {
                     }]
                   ]
                 };
-                sendMessage($chatId, $response, $keyboard);
+                sendMessage($chatId, $response);
                 break;
       /*  case '/ayuda':
             $response = "Tranquilo, estoy contigo.";
