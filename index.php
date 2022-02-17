@@ -29,11 +29,11 @@ switch($message) {
             $response = 'Hola! Soy @Alex19bot';
             sendMessage($chatId, $response);
             break;
-        case '/ayuda':
+      /*  case '/ayuda':
             $response = "Tranquilo, estoy contigo.";
             $keyboard = ["https://www.youtube.com/"],["Pos Ok"],["Pos Ok"];
             sendMessage($chatId, $response, $keyboard);
-            break;
+            break;*/
         case '/noticias':
             getNoticias($chatId);
             break;
@@ -55,7 +55,7 @@ switch($message) {
 
 
 
-function sendMessage($chatId, $response, $keyboard='') {
+function sendMessage($chatId, $response) {
     $url = $GLOBALS['website'].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.urlencode($response);
     file_get_contents($url);
 
