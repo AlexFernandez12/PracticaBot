@@ -11,19 +11,66 @@ $message = $update['message']['text'];
 $repl=$update['message']['reply_to_message']['text'];
 
 
+$respuesta = "Trabajando";
+$url = "https://api.telegram.org/bot$token/sendMessage";
+$teclado = array(
+'teclado' => array(
+array(
+"botón",
+"\ud83d\ude08",
+"\ud83d\udcaa",
+"\ud83d\udcf2"
+),
+array(
+"Moneda",
+"Menú"
+) ,
+matriz (
+"1", "2", "3"
+),
+
+
+
+
+'resize_keyboard' => true,
+'one_time_keyboard' => false
+);
+$postfields = array(
+'chat_id' => "$chatid",
+'texto' => "$respuesta",
+'reply_markup' => json_encode($teclado)
+);
+
+$str = str_replace('\\\\', '\\', $postfields);
+
+imprimir_r($cadena);
+if (!$curld = curl_init()) {
+salir;
+}
+
+curl_setopt($rizo, CURLOPT_POST, verdadero);
+curl_setopt($curva, CURLOPT_POSTFIELDS, $cadena);
+curl_setopt($rizo, CURLOPT_URL,$url);
+curl_setopt($curld, CURLOPT_RETURNTRANSFER, verdadero);
+
+$salida = curl_exec($curld);
+
+curl_close ($rizo);
 switch($message) {
     case '/start':
-        $teclado = array(
-            "inline_keyboard" => array(array(array(
-            "texto" => "boton",
-            "callback_data" => "button_0"
-            )))
-            );
-        $postfields = array(
-            'chat_id' => "$chatId",
-            'texto' => "$message",
-            'reply_markup' => json_encode($teclado)
-            );
+        $response = 'Me has iniciado';
+        sendMessage($chatId, $response);
+        break;
+        case '/help':
+            $response  = 'Los comandos disponibles son:
+            /start Inicializa el bot
+            /saludo Presentacion del bot
+            /ayuda Te ofrece apoyo
+            /noticias Muestra noticias acerca de futbol
+            /fecha Muestra la fecha actual
+            /hora Muestra la hora actual
+            /help Muestra esta ayuda';
+            sendMessage($chatId, $response);
             break;
         case '/saludo':
             $response = 'Hola! Soy @Alex19bot';
