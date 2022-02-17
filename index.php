@@ -25,11 +25,11 @@ switch($message) {
             /fecha Muestra la fecha actual
             /hora Muestra la hora actual
             /help Muestra esta ayuda';
-            sendMessage($chatId, $response);
+            sendMessage($chatId, $response, FALSE);
             break;
         case '/saludo':
             $response = 'Hola! Soy @Alex19bot';
-            sendMessage($chatId, $response);
+            sendMessage($chatId, $response, FALSE);
             break;
             /*case '/enlaces':
                 $response = 'Selecciona uno';
@@ -56,16 +56,16 @@ switch($message) {
             break;
             case '/fecha':
                 $response  = 'La fecha actual es ' . date('d/m/Y');
-                sendMessage($chatId, $response);
+                sendMessage($chatId, $response, FALSE);
                 break;
         
             case '/hora':
                 $response  = 'La hora actual es ' . date('H:i:s');
-                sendMessage($chatId, $response);
+                sendMessage($chatId, $response, FALSE);
             break;
     default:
         $response = 'No te he entendido';
-        sendMessage($chatId, $response);
+        sendMessage($chatId, $response, FALSE);
         break;
  
     }
