@@ -31,7 +31,7 @@ switch($message) {
             $response = 'Hola! Soy @Alex19bot';
             sendMessage($chatId, $response);
             break;
-            case '/enlaces':
+            /*case '/enlaces':
                 $response = 'Selecciona uno';
                 $keyboard = {
                   'inline_keyboard': [
@@ -45,7 +45,7 @@ switch($message) {
                   ]
                 };
                 sendMessage($chatId, $response);
-                break;
+                break;*/
       /*  case '/ayuda':
             $response = "Tranquilo, estoy contigo.";
             $teclado = ["https://www.youtube.com/"],["Pos Ok"],["Pos Ok"];
@@ -102,6 +102,9 @@ function getNoticias($chatId){
     $array = json_decode($json, TRUE);
     
     $titulos = $titulos."\n\n".$array['channel']['title']."<a href='".$array['channel']['item']['6']['link']."'> +info</a>";
+    $titulos = $titulos."\n\n".$array['channel']['title']."<a href='".$array['channel']['item']['5']['link']."'> +info</a>";
+    $titulos = $titulos."\n\n".$array['channel']['title']."<a href='".$array['channel']['item']['4']['link']."'> +info</a>";
+    $titulos = $titulos."\n\n".$array['channel']['title']."<a href='".$array['channel']['item']['2']['link']."'> +info</a>";
     
     sendMessage($chatId, $titulos);
  
