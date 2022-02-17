@@ -56,13 +56,13 @@ switch($message) {
         case '/noticias':
             getNoticias($chatId);
             break;
-            case 'futbol';
+       /*     case 'futbol';
          getNoticias($chatId);
           break;
           case 'tenis':
             $response  = 'tenis ';
             sendMessage($chatId, $response, FALSE);
-            break;
+            break;*/
           case '/fecha':
                 $response  = 'La fecha actual es ' . date('d/m/Y');
                 sendMessage($chatId, $response, FALSE);
