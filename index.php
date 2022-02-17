@@ -29,11 +29,11 @@ switch($message) {
             $response = 'Hola! Soy @Alex19bot';
             sendMessage($chatId, $response);
             break;
-       /* case '/ayuda':
+        case '/ayuda':
             $response = "Tranquilo, estoy contigo.";
-            $keyboard = ["https://www.youtube.com/"],["Pos Ok"],["Pos Ok"];
-            sendMessage($chatId, $response, $keyboard);
-            break;*/
+            $msg = ["https://www.youtube.com/"],["Pos Ok"],["Pos Ok"];
+            sendMessage($chatId, $response, $msg);
+            break;
         case '/noticias':
             getNoticias($chatId);
             break;
@@ -54,7 +54,7 @@ switch($message) {
     }
 
 
-    function inlineKeyword($chat_id, $keyword_data, $msg = '') {
+    function inlineKeyword($chatId, $keyword_data, $msg = '') {
         if (empty($msg)) {
             $msg = "Select";
         }
