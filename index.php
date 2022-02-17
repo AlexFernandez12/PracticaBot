@@ -11,32 +11,20 @@ $message = $update['message']['text'];
 $repl=$update['message']['reply_to_message']['text'];
 
 
-$teclado = array(
-    "inline_keyboard" => array(array(array(
-    "texto" => "boton",
-    "callback_data" => "button_0"
-    )))
-    );
-$postfields = array(
-    'chat_id' => "$chatId",
-    'texto' => "$message",
-    'reply_markup' => json_encode($teclado)
-    );
-
 switch($message) {
     case '/start':
-        $response = 'Me has iniciado';
-        sendMessage($chatId, $response);
-        break;
-        case '/help':
-            $response  = 'Los comandos disponibles son:
-            /start Inicializa el bot
-            /saludo Presentacion del bot
-            /ayuda Te ofrece apoyo
-            /noticias Muestra noticias acerca de futbol
-            /fecha Muestra la fecha actual
-            /hora Muestra la hora actual
-            /help Muestra esta ayuda';
+        $teclado = array(
+            "inline_keyboard" => array(array(array(
+            "texto" => "boton",
+            "callback_data" => "button_0"
+            )))
+            );
+        $postfields = array(
+            'chat_id' => "$chatId",
+            'texto' => "$message",
+            'reply_markup' => json_encode($teclado)
+            );
+        
             sendMessage($chatId, $response);
             break;
         case '/saludo':
