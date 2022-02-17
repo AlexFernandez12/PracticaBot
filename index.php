@@ -16,12 +16,13 @@ switch($message) {
         $response = 'Me has iniciado';
         sendMessage($chatId, $response, TRUE);
 
-        switch($message == '/start'){
+        switch($message){
             case 'Hola';
+            $response  = 'eeee ';
             sendMessage($chatId, $response, FALSE);
             break;
             case 'Adios':
-                $response  = 'La hora actual es ' . date('H:i:s');
+                $response  = 'eeee ';
                 sendMessage($chatId, $response, FALSE);
             break;
             default:
