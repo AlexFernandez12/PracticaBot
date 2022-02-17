@@ -9,27 +9,6 @@ $chatId = $update['message']['chat']['id'];
 $message = $update['message']['text'];
 $repl=$update['message']['reply_to_message']['text'];
 
-if ((strpos($message, "adios") === 0)||(strpos($message, "hola") === 0)){
-    $response = "Hello !";
-
-    $keyboard = [
-    'inline_keyboard' => [
-        [
-            ['text' => 'COMMANDS', 'callback_data' => 'someString']
-        ]
-    ]
-];
-$encodedKeyboard = json_encode($keyboard);
-$parameters = 
-    array(
-        'chat_id' => $chatId, 
-        'text' => $response, 
-        'reply_markup' => $encodedKeyboard
-    );
-
-send('sendMessage', $parameters);
-}
-
 switch($message) {
     case '/start':
         $response = 'Me has iniciado';
@@ -74,29 +53,15 @@ switch($message) {
  
     }
 
-    function send($method, $data)
-    {
-        $url = "https://api.telegram.org/bot5190510451:AAEB_CmkxY-VXdoB8Fkwznrb3SVb_8YKhHc". "/" . $method;
-    
-        if (!$curld = curl_init()) {
-            exit;
-        }
-        curl_setopt($curld, CURLOPT_POST, true);
-        curl_setopt($curld, CURLOPT_POSTFIELDS, $data);
-        curl_setopt($curld, CURLOPT_URL, $url);
-        curl_setopt($curld, CURLOPT_RETURNTRANSFER, true);
-        $output = curl_exec($curld);
-        curl_close($curld);
-        return $output;
-    }
-    
-    }
-    
 
-    function sendMessage ($chatId, $message){
-        $url = $GLOBALS['website']."/sendMessage?chat_id=".$chatId."&text=".$message."&reply_to_message_id=".$message_id."&parse_mode=HTML";
-        file_get_contents($url);      
-        }
+
+function sendMessage($chatId, $response, $keyboard='') {
+    $url = $GLOBALS['website'].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.urlencode($response);
+    file_get_contents($url);
+
+  
+
+}
 /*
 function sendMessage($chatId, $response, $repl) {
     if($repl==TRUE){
