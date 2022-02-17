@@ -11,51 +11,6 @@ $message = $update['message']['text'];
 $repl=$update['message']['reply_to_message']['text'];
 
 
-$respuesta = "Trabajando";
-$url = "https://api.telegram.org/bot$token/sendMessage";
-$teclado = array(
-'teclado' => array(
-array(
-"botón",
-"\ud83d\ude08",
-"\ud83d\udcaa",
-"\ud83d\udcf2"
-),
-array(
-"Moneda",
-"Menú"
-) ,
-matriz (
-"1", "2", "3"
-),
-
-
-
-
-'resize_keyboard' => true,
-'one_time_keyboard' => false
-);
-$postfields = array(
-'chat_id' => "$chatid",
-'texto' => "$respuesta",
-'reply_markup' => json_encode($teclado)
-);
-
-$str = str_replace('\\\\', '\\', $postfields);
-
-imprimir_r($cadena);
-if (!$curld = curl_init()) {
-salir;
-}
-
-curl_setopt($rizo, CURLOPT_POST, verdadero);
-curl_setopt($curva, CURLOPT_POSTFIELDS, $cadena);
-curl_setopt($rizo, CURLOPT_URL,$url);
-curl_setopt($curld, CURLOPT_RETURNTRANSFER, verdadero);
-
-$salida = curl_exec($curld);
-
-curl_close ($rizo);
 switch($message) {
     case '/start':
         $response = 'Me has iniciado';
@@ -76,6 +31,19 @@ switch($message) {
             $response = 'Hola! Soy @Alex19bot';
             sendMessage($chatId, $response);
             break;
+            case '/enlaces':
+                $keyboard = {
+                  'inline_keyboard': [
+                    [{
+                      'text': 'Youtube',
+                      'url': 'https://youtube.com'
+                    },{
+                      'text': 'Google',
+                      'url': 'https://google.com'
+                    }]
+                  ]
+                };
+                sendMessage($chatId, $response, $keyboard);
       /*  case '/ayuda':
             $response = "Tranquilo, estoy contigo.";
             $teclado = ["https://www.youtube.com/"],["Pos Ok"],["Pos Ok"];
@@ -101,10 +69,15 @@ switch($message) {
     }
 
 
+    
 
-function sendMessage($chatId, $response, $teclado='') {
+
+function sendMessage($chatId, $response, $keyboard=NULL) {
     $url = $GLOBALS['website'].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.urlencode($response);
     file_get_contents($url);
+    if (isset($keyboard)) {
+        $teclado = '&reply_markup={"keyboard":['.$keyboard.'], "resize_keyboard":true, "one_time_keyboard":true}';
+    }
 
 }
 /*
