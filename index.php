@@ -15,13 +15,6 @@ switch($message) {
     case '/start':
         $response = 'Me has iniciado';
         sendMessage($chatId, $response, TRUE);
-        if($message == 'hola'){
-        $response = 'Hola';
-        sendMessage($chatId, $response, FALSE);
-        }else{
-            $response = 'Bye';
-            sendMessage($chatId, $response, FALSE);
-        }
         break;
         case '/help':
             $response  = 'Los comandos disponibles son:
@@ -76,6 +69,14 @@ switch($message) {
         break;
  
     }
+
+    if($message == 'hola'){
+        $response = 'Hola';
+        sendMessage($chatId, $response, FALSE);
+        }else{
+            $response = 'Bye';
+            sendMessage($chatId, $response, FALSE);
+        }
 
 
     
