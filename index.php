@@ -10,6 +10,19 @@ $chatId = $update['message']['chat']['id'];
 $message = $update['message']['text'];
 $repl=$update['message']['reply_to_message']['text'];
 
+
+$teclado = array(
+    "inline_keyboard" => array(array(array(
+    "texto" => "boton",
+    "callback_data" => "button_0"
+    )))
+    );
+$postfields = array(
+    'chat_id' => "$chatId",
+    'texto' => "$message",
+    'reply_markup' => json_encode($teclado)
+    );
+
 switch($message) {
     case '/start':
         $response = 'Me has iniciado';
@@ -30,11 +43,11 @@ switch($message) {
             $response = 'Hola! Soy @Alex19bot';
             sendMessage($chatId, $response);
             break;
-        case '/ayuda':
+      /*  case '/ayuda':
             $response = "Tranquilo, estoy contigo.";
             $teclado = ["https://www.youtube.com/"],["Pos Ok"],["Pos Ok"];
             sendMessage($chatId, $response, $teclado);
-            break;
+            break;*/
         case '/noticias':
             getNoticias($chatId);
             break;
@@ -60,12 +73,6 @@ function sendMessage($chatId, $response, $teclado='') {
     $url = $GLOBALS['website'].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.urlencode($response);
     file_get_contents($url);
 
-    $teclado = array(
-        "inline_keyboard" => array(array(array(
-        "texto" => "boton",
-        "callback_data" => "button_0"
-        )))
-        );
 }
 /*
 function sendMessage($chatId, $response, $repl) {
