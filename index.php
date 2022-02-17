@@ -54,6 +54,39 @@ switch($message) {
     }
 
 
+    function inlineKeyword($chat_id, $keyword_data, $msg = '') {
+        if (empty($msg)) {
+            $msg = "Select";
+        }
+        $inline_keyboard = array();
+        $row = 0;
+        $prev_value = '';
+        foreach ($keyword_data as $value) {
+            if (isset($prev_value['text']) && strlen($prev_value['text']) < 10 && strlen($value['text']) < 10) {
+                $inline_keyboard[$row - 1][] = $value;
+            } else {
+                $inline_keyboard[$row][] = $value;
+            }
+            $prev_value = $value;
+            $row++;
+        }
+//    $inline_keyboard[] = $keyword_data;
+        $reply_markup = $this->telegram->replyKeyboardMarkup([
+            'inline_keyboard' => $inline_keyboard,
+            'resize_keyboard' => true
+        ]);
+        $response = $this->telegram->sendMessage([
+            'text' => $msg,
+            'reply_markup' => $reply_markup,
+            'chat_id' => $chat_id
+        ]);
+    }
+
+
+
+
+
+
 
 function sendMessage($chatId, $response) {
     $url = $GLOBALS['website'].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.urlencode($response);
