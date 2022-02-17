@@ -31,8 +31,8 @@ switch($message) {
             break;
         case '/ayuda':
             $response = "Tranquilo, estoy contigo.";
-            $msg = ["https://www.youtube.com/"],["Pos Ok"],["Pos Ok"];
-            sendMessage($chatId, $response, $msg);
+            $keyboard = ["https://www.youtube.com/"],["Pos Ok"],["Pos Ok"];
+            sendMessage($chatId, $response, $keyboard);
             break;
         case '/noticias':
             getNoticias($chatId);
@@ -54,43 +54,34 @@ switch($message) {
     }
 
 
-    function inlineKeyword($chatId, $keyword_data, $msg = '') {
-        if (empty($msg)) {
-            $msg = "Select";
-        }
-        $inline_keyboard = array();
-        $row = 0;
-        $prev_value = '';
-        foreach ($keyword_data as $value) {
-            if (isset($prev_value['text']) && strlen($prev_value['text']) < 10 && strlen($value['text']) < 10) {
-                $inline_keyboard[$row - 1][] = $value;
-            } else {
-                $inline_keyboard[$row][] = $value;
-            }
-            $prev_value = $value;
-            $row++;
-        }
-//    $inline_keyboard[] = $keyword_data;
-        $reply_markup = $this->telegram->replyKeyboardMarkup([
-            'inline_keyboard' => $inline_keyboard,
-            'resize_keyboard' => true
-        ]);
-        $response = $this->telegram->sendMessage([
-            'text' => $msg,
-            'reply_markup' => $reply_markup,
-            'chat_id' => $chat_id
-        ]);
-    }
+    $keyboard = [
+        'inline_keyboard' => [
+        [
+        ['text' => 'Some text', 'callback_data' => 'the data are sent to webhook when a user clicks on the button']
+        ]
+        ]
+        ];
+        $encodedKeyboard = json_encode($keyboard);
+        file_get_contents($website . "/sendmessage?chat_id=" . $chatId . "&text=" . $welcomemessage . "&reply_markup=" . $encodedKeyboard);
 
 
 
 
 
 
-
-function sendMessage($chatId, $response) {
+function sendMessage($chatId, $response, $keyboard='') {
     $url = $GLOBALS['website'].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.urlencode($response);
     file_get_contents($url);
+
+    $keyboard = [
+        'inline_keyboard' => [
+        [
+        ['text' => 'Some text', 'callback_data' => 'the data are sent to webhook when a user clicks on the button']
+        ]
+        ]
+        ];
+        $encodedKeyboard = json_encode($keyboard);
+        file_get_contents($website . "/sendmessage?chat_id=" . $chatId . "&text=" . $welcomemessage . "&reply_markup=" . $encodedKeyboard);
 
 }
 /*
