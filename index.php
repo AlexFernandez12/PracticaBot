@@ -102,12 +102,14 @@ function getNoticias($chatId){
     $array = json_decode($json, TRUE);
     
     $titulos = $titulos."\n\n".$array['channel']['title']."<a href='".$array['channel']['item']['6']['link']."'> +info</a>";
-    $titulos = $titulos."\n\n".$array['channel']['title']."<a href='".$array['channel']['item']['5']['link']."'> +info</a>";
-    $titulos = $titulos."\n\n".$array['channel']['title']."<a href='".$array['channel']['item']['4']['link']."'> +info</a>";
-    $titulos = $titulos."\n\n".$array['channel']['title']."<a href='".$array['channel']['item']['2']['link']."'> +info</a>";
+    $titulo = $titulo."\n\n".$array['channel']['title']."<a href='".$array['channel']['item']['5']['link']."'> +info</a>";
+    $titul = $titul."\n\n".$array['channel']['title']."<a href='".$array['channel']['item']['4']['link']."'> +info</a>";
+    $titu = $titu."\n\n".$array['channel']['title']."<a href='".$array['channel']['item']['2']['link']."'> +info</a>";
     
     sendMessage($chatId, $titulos);
- 
+    sendMessage($chatId, $titulo);
+    sendMessage($chatId, $titul);
+    sendMessage($chatId, $titu);
  
  
 }
