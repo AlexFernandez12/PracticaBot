@@ -99,7 +99,7 @@ switch($message) {
         file_get_contents($url);
     }
 
-function getNoticias($chatId, $buscar){
+function getNoticias($chatId){
  
     //include("simple_html_dom.php");
  
