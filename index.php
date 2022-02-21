@@ -64,7 +64,7 @@ switch($message) {
             case 'futbol';
             getNoticias($chatId, 2);
           break;
-          case 'tenis':
+          case 'basket':
             getNoticias($chatId, 3);
         break;
             case '/fecha':
@@ -111,7 +111,7 @@ function getNoticias($chatId, $buscar){
     $url = "https://e00-marca.uecdn.es/rss/futbol/granada.xml";
     break;
     case '3':
-    $url = "https://e00-marca.uecdn.es/rss/futbol/valencia.xml";
+    $url = "https://as.com/rss/baloncesto/nba.xml";
     break;
     default:
     break;
