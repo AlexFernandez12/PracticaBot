@@ -104,19 +104,9 @@ function getNoticias($chatId, $buscar){
     //include("simple_html_dom.php");
  
     $context = stream_context_create(array('https' =>  array('header' => 'Accept: application/xml')));
-    switch($buscar){
-    case 1;
+
     $url = "https://e00-marca.uecdn.es/rss/futbol/barcelona.xml";
-    break;
-    case 2;
-    $url = "https://e00-marca.uecdn.es/rss/futbol/granada.xml"
-    break;
-    case 3;
-    $url = "https://e00-marca.uecdn.es/rss/futbol/valencia.xml"
-    break;
-    default:
-    break;
-    }
+
     $xmlstring = file_get_contents($url, false, $context);
  
     $xml = simplexml_load_string($xmlstring, "SimpleXMLElement", LIBXML_NOCDATA);
