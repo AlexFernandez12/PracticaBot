@@ -40,7 +40,6 @@ switch($message) {
         file_get_contents('https://api.telegram.org/bot5190510451:AAEB_CmkxY-VXdoB8Fkwznrb3SVb_8YKhHc/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&reply_markup='.json_encode($keyboard).'&text=Elija que desea hacer');
             break;
             case '/enlaces':
-                $response = 'Selecciona uno';
                 $keyboard = {
                   'inline_keyboard': [
                     [{
@@ -52,7 +51,7 @@ switch($message) {
                     }]
                   ]
                 };
-                sendMessage($chatId, $response, FALSE);
+                file_get_contents('https://api.telegram.org/bot5190510451:AAEB_CmkxY-VXdoB8Fkwznrb3SVb_8YKhHc/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&reply_markup='.json_encode($keyboard).'&text=Elija que desea hacer');
                 break;
       /*  case '/ayuda':
             $response = "Tranquilo, estoy contigo.";
