@@ -66,7 +66,7 @@ switch($message) {
                         array('text'=>'https://www.marca.com/','callback_data'=>"3")
                     )), 'one_time_keyboard' => false, 'resize_keyboard' => true
             );
-            file_get_contents('https://api.telegram.org/bot5190510451:AAEB_CmkxY-VXdoB8Fkwznrb3SVb_8YKhHc/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&reply_markup='.json_encode($keyboard).'&text=Escoja un peridico por teclado');
+            file_get_contents('https://api.telegram.org/bot5190510451:AAEB_CmkxY-VXdoB8Fkwznrb3SVb_8YKhHc/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&reply_markup='.json_encode($keyboard).'&text=Escoja un periodico por teclado');
                 break;
            /* case '/enlaces':
                 $keyboard = {
@@ -87,6 +87,9 @@ switch($message) {
             $teclado = ["https://www.youtube.com/"],["Pos Ok"],["Pos Ok"];
             sendMessage($chatId, $response, $teclado);
             break;*/
+            case 'as':
+                $response  = 'https://as.com/';
+                sendMessage($chatId, $response, TRUE);
         case 'futbol':
             getNoticias($chatId, 1);
             break;
