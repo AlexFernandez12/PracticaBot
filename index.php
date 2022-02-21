@@ -53,11 +53,11 @@ switch($message) {
                 };
                 file_get_contents('https://api.telegram.org/bot5190510451:AAEB_CmkxY-VXdoB8Fkwznrb3SVb_8YKhHc/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&reply_markup='.json_encode($keyboard).'&text=Elija que desea hacer');
                 break;
-      /*  case '/ayuda':
+         case '/ayuda':
             $response = "Tranquilo, estoy contigo.";
             $teclado = ["https://www.youtube.com/"],["Pos Ok"],["Pos Ok"];
             sendMessage($chatId, $response, $teclado);
-            break;
+            break;*/
         case '/noticias':
             getNoticias($chatId, 1);
             break;
@@ -66,7 +66,7 @@ switch($message) {
           break;
           case 'tenis':
             getNoticias($chatId, 3);
-        break;*/
+        break;
             case '/fecha':
                 $response  = 'La fecha actual es ' . date('d/m/Y');
                 sendMessage($chatId, $response, FALSE);
@@ -97,20 +97,20 @@ switch($message) {
         else $url = $GLOBALS['website'].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.urlencode($response);
         file_get_contents($url);
     }
-/*
+
 function getNoticias($chatId, $buscar){
  
     //include("simple_html_dom.php");
  
     $context = stream_context_create(array('https' =>  array('header' => 'Accept: application/xml')));
     switch($buscar){
-    case 1;
+    case 1:
     $url = "https://e00-marca.uecdn.es/rss/futbol/barcelona.xml";
     break;
-    case 2;
+    case 2:
     $url = "https://e00-marca.uecdn.es/rss/futbol/granada.xml"
     break;
-    case 3;
+    case 3:
     $url = "https://e00-marca.uecdn.es/rss/futbol/valencia.xml"
     break;
     default:
@@ -130,6 +130,6 @@ function getNoticias($chatId, $buscar){
 
  
 }
-*/
+
 ?>
 
