@@ -31,10 +31,16 @@ switch($message) {
         case '/saludo':
             $keyboard = array('keyboard' =>
             array(array(
-                array('text'=>'/juegos','callback_data'=>"1"),
+                array('text'=>'/futbol','callback_data'=>"1"),
+            ),
+            array(
+                array('text'=>'formula1','callback_data'=>"1"),
+            ),
+            array(
+                array('text'=>'tenis','callback_data'=>"1"),
             ),
                 array(
-                    array('text'=>'/easter egg','callback_data'=>"4")
+                    array('text'=>'boxeo','callback_data'=>"4")
                 )), 'one_time_keyboard' => false, 'resize_keyboard' => true
         );
         file_get_contents('https://api.telegram.org/bot5190510451:AAEB_CmkxY-VXdoB8Fkwznrb3SVb_8YKhHc/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&reply_markup='.json_encode($keyboard).'&text=Elija que desea hacer');
@@ -66,6 +72,12 @@ switch($message) {
           break;
           case 'basket':
             getNoticias($chatId, 3);
+        break;
+        case 'golf':
+            getNoticias($chatId, 4);
+        break;
+        case 'boxeo':
+            getNoticias($chatId, 5);
         break;
             case '/fecha':
                 $response  = 'La fecha actual es ' . date('d/m/Y');
@@ -112,6 +124,12 @@ function getNoticias($chatId, $buscar){
     break;
     case '3':
     $url = "https://as.com/rss/baloncesto/nba.xml";
+    break;
+    case '4':
+    $url = "https://as.com/rss/masdeporte/golf.xml";
+    break;
+    case '5':
+    $url = "https://as.com/tag/rss/boxeo/a/";
     break;
     default:
     break;
