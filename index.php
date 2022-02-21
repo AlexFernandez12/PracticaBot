@@ -13,9 +13,8 @@ $repl=$update['message']['reply_to_message']['text'];
 
 switch($message) {
     case '/start':
-        $response = 'Sobre que quieres las noticias';
-        sendMessage($chatId, $response, TRUE);
-       
+        $response = 'Bot iniciado, escriba /help para ayudarle con el funcionamiento';
+        sendMessage($chatId, $response, TRUE);       
         break;
         case '/help':
             $response  = 'Los comandos disponibles son:
@@ -31,7 +30,7 @@ switch($message) {
         case '/noticias':
             $keyboard = array('keyboard' =>
             array(array(
-                array('text'=>'/futbol','callback_data'=>"1"),
+                array('text'=>'futbol','callback_data'=>"1"),
             ),
             array(
                 array('text'=>'formula1','callback_data'=>"2"),
@@ -75,23 +74,23 @@ switch($message) {
           break;
           case 'basket':
             getNoticias($chatId, 3);
-        break;
-        case 'golf':
+         break;
+         case 'golf':
             getNoticias($chatId, 4);
         break;
         case 'boxeo':
             getNoticias($chatId, 5);
         break;
-            case '/fecha':
-                $response  = 'La fecha actual es ' . date('d/m/Y');
-                sendMessage($chatId, $response, FALSE);
+        case '/fecha':
+            $response  = 'La fecha actual es ' . date('d/m/Y');
+            sendMessage($chatId, $response, FALSE);
                 break;
         
             case '/hora':
                 $response  = 'La hora actual es ' . date('H:i:s');
                 sendMessage($chatId, $response, FALSE);
-            break;
-    default:
+        break;
+        default:
         $response = 'No te he entendido';
         sendMessage($chatId, $response, FALSE);
         break;
@@ -144,7 +143,7 @@ function getNoticias($chatId, $buscar){
     $array = json_decode($json, TRUE);
     
     for ($i=0; $i < 9; $i++) { 
-    $titulos = $titulos."\n\n".$array['channel']['title']."<a href='".$array['channel']['item'][$i]['link']."'> +info</a>";
+    $titulos = "<a href='".$array['channel']['item'][$i]['link']."'> +info</a>";
     }
     
     sendMessage($chatId, $titulos,FALSE);
