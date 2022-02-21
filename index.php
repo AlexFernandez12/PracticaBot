@@ -99,7 +99,7 @@ switch($message) {
         else $url = $GLOBALS['website'].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.urlencode($response);
         file_get_contents($url);
     }
-/*
+
 function getNoticias($chatId, $buscar){
  
     //include("simple_html_dom.php");
@@ -130,7 +130,6 @@ function getNoticias($chatId, $buscar){
 
  
 }
-*/
 
 ?>
 
