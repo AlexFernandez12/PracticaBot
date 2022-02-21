@@ -22,30 +22,31 @@ switch($message) {
             /start Inicializa el bot
             /saludo Presentacion del bot
             /ayuda Te ofrece apoyo
-            /noticias Muestra noticias acerca de futbol
+            /noticias Muestra noticias acerca de cualquier deporte
             /fecha Muestra la fecha actual
             /hora Muestra la hora actual
             /help Muestra esta ayuda';
             sendMessage($chatId, $response, FALSE);
             break;
         case '/noticias':
-            $response = 'Escribe en teclado sobre que quieres las noticias';
-            sendMessage($chatId, $response, TRUE);
             $keyboard = array('keyboard' =>
             array(array(
                 array('text'=>'/futbol','callback_data'=>"1"),
             ),
             array(
-                array('text'=>'formula1','callback_data'=>"1"),
+                array('text'=>'formula1','callback_data'=>"2"),
             ),
             array(
-                array('text'=>'tenis','callback_data'=>"1"),
+                array('text'=>'tenis','callback_data'=>"3"),
+            ),
+            array(
+                array('text'=>'golf','callback_data'=>"4"),
             ),
                 array(
-                    array('text'=>'boxeo','callback_data'=>"4")
+                    array('text'=>'boxeo','callback_data'=>"5")
                 )), 'one_time_keyboard' => false, 'resize_keyboard' => true
         );
-        file_get_contents('https://api.telegram.org/bot5190510451:AAEB_CmkxY-VXdoB8Fkwznrb3SVb_8YKhHc/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&reply_markup='.json_encode($keyboard).'&text=Elija que desea hacer');
+        file_get_contents('https://api.telegram.org/bot5190510451:AAEB_CmkxY-VXdoB8Fkwznrb3SVb_8YKhHc/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&reply_markup='.json_encode($keyboard).'&text=Escoja un deporte por teclado');
             break;
            /* case '/enlaces':
                 $keyboard = {
