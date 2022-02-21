@@ -56,7 +56,7 @@ switch($message) {
             case '/noticias1':
                 $keyboard = array('keyboard' =>
                 array(array(
-                    array('text'=>'futbol','callback_data'=>"1"),
+                    array('text'=>'https://as.com/','callback_data'=>"1"),
                 ),
                     array(
                         array('text'=>'nfl','callback_data'=>"5")
