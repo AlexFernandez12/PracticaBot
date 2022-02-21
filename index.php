@@ -16,7 +16,7 @@ switch($message) {
         $response = 'Bot iniciado, escriba /help para ayudarle con el funcionamiento';
         sendMessage($chatId, $response, FALSE);       
         break;
-        case '/ayuda':
+        case '/start':
             $response = 'Bot iniciado, escriba /help para ayudarle con el funcionamiento';
             sendMessage($chatId, $response, TRUE);       
             break;
@@ -154,7 +154,7 @@ function getNoticias($chatId, $buscar){
     $json = json_encode($xml);
     $array = json_decode($json, TRUE);
     
-    $titulos = $titulos."\n\n".$array['channel']['title']."<a href='".$array['channel']['title']['item']['1']['link']."'> +info</a>";
+    $titulos = $titulos."\n\n".$array['channel']['title']."<a href='".$array['channel']['item']['1']['link']."'> +info</a>";
     $titulos1 = $titulos1."\n\n".$array['channel']['title']."<a href='".$array['channel']['item']['2']['link']."'> +info</a>";
     $titulos2 = $titulos2."\n\n".$array['channel']['title']."<a href='".$array['channel']['item']['3']['link']."'> +info</a>";
     $titulos3 = $titulos3."\n\n".$array['channel']['title']."<a href='".$array['channel']['item']['4']['link']."'> +info</a>";
