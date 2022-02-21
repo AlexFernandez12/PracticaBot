@@ -55,7 +55,7 @@ switch($message) {
                 };
                 sendMessage($chatId, $response);
                 break;
-        case '/ayuda':
+      /*  case '/ayuda':
             $response = "Tranquilo, estoy contigo.";
             $teclado = ["https://www.youtube.com/"],["Pos Ok"],["Pos Ok"];
             sendMessage($chatId, $response, $teclado);
@@ -68,7 +68,7 @@ switch($message) {
           break;
           case 'tenis':
             getNoticias($chatId, 3);
-        break;
+        break;*/
             case '/fecha':
                 $response  = 'La fecha actual es ' . date('d/m/Y');
                 sendMessage($chatId, $response, FALSE);
