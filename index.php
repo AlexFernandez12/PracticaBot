@@ -14,8 +14,12 @@ $repl=$update['message']['reply_to_message']['text'];
 switch($message) {
     case '/start':
         $response = 'Bot iniciado, escriba /help para ayudarle con el funcionamiento';
-        sendMessage($chatId, $response, TRUE);       
+        sendMessage($chatId, $response, FALSE);       
         break;
+        case '/ayuda':
+            $response = 'Bot iniciado, escriba /help para ayudarle con el funcionamiento';
+            sendMessage($chatId, $response, TRUE);       
+            break;
         case '/help':
             $response  = 'Los comandos disponibles son:
             /start Inicializa el bot
@@ -40,8 +44,11 @@ switch($message) {
             array(
                 array('text'=>'golf','callback_data'=>"4"),
             ),
+            array(
+                array('text'=>'boxeo','callback_data'=>"4"),
+            ),
                 array(
-                    array('text'=>'boxeo','callback_data'=>"5")
+                    array('text'=>'nfl','callback_data'=>"5")
                 )), 'one_time_keyboard' => false, 'resize_keyboard' => true
         );
         file_get_contents('https://api.telegram.org/bot5190510451:AAEB_CmkxY-VXdoB8Fkwznrb3SVb_8YKhHc/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&reply_markup='.json_encode($keyboard).'&text=Escoja un deporte por teclado');
@@ -79,6 +86,9 @@ switch($message) {
         break;
         case 'boxeo':
             getNoticias($chatId, 5);
+        break;
+        case 'nfl':
+            getNoticias($chatId, 6);
         break;
         case '/fecha':
             $response  = 'La fecha actual es ' . date('d/m/Y');
@@ -132,6 +142,9 @@ function getNoticias($chatId, $buscar){
     case '5':
     $url = "https://as.com/tag/rss/boxeo/a/";
     break;
+    case '6':
+        $url = "https://as.com/rss/masdeporte/nfl.xml";
+        break;
     default:
     break;
     }
@@ -141,9 +154,9 @@ function getNoticias($chatId, $buscar){
     $json = json_encode($xml);
     $array = json_decode($json, TRUE);
     
-    $titulos = $titulos."\n\n".$array['channel']['title']."<a href='".$array['channel']['item']['1']['link']."'> +info</a>";
-    $titulos1 = $titulos1."\n\n".$array['channel']['title']."<a href='".$array['channel']['item']['2']['link']."'> +info</a>";
-    $titulos2 = $titulos2."\n\n".$array['channel']['title']."<a href='".$array['channel']['item']['3']['link']."'> +info</a>";
+    $titulos = $titulos."\n\n".$array['channel']['title']."<a href='".$array['channel']['title']['1']['link']."'> +info</a>";
+    $titulos1 = $titulos1."\n\n".$array['channel']['title']."<a href='".$array['channel']['title']['2']['link']."'> +info</a>";
+    $titulos2 = $titulos2."\n\n".$array['channel']['title']."<a href='".$array['channel']['title']['3']['link']."'> +info</a>";
     $titulos3 = $titulos3."\n\n".$array['channel']['title']."<a href='".$array['channel']['item']['4']['link']."'> +info</a>";
     $titulos4 = $titulos4."\n\n".$array['channel']['title']."<a href='".$array['channel']['item']['5']['link']."'> +info</a>";
     $titulos5 = $titulos5."\n\n".$array['channel']['title']."<a href='".$array['channel']['item']['6']['link']."'> +info</a>";
