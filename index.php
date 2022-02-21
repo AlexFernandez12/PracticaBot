@@ -54,6 +54,7 @@ switch($message) {
         );
         file_get_contents('https://api.telegram.org/bot5190510451:AAEB_CmkxY-VXdoB8Fkwznrb3SVb_8YKhHc/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&reply_markup='.json_encode($keyboard).'&text=Escoja un deporte por teclado');
             break;
+            
             case '/periodico':
                 $keyboard = array('keyboard' =>
                 array(array(
@@ -68,70 +69,54 @@ switch($message) {
             );
             file_get_contents('https://api.telegram.org/bot5190510451:AAEB_CmkxY-VXdoB8Fkwznrb3SVb_8YKhHc/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&reply_markup='.json_encode($keyboard).'&text=Escoja un periodico por teclado');
                 break;
-           /* case '/enlaces':
-                $keyboard = {
-                  'inline_keyboard': [
-                    [{
-                      'text': 'Youtube',
-                      'url': 'https://youtube.com'
-                    },{
-                      'text': 'Google',
-                      'url': 'https://google.com'
-                    }]
-                  ]
-                };
-                file_get_contents('https://api.telegram.org/bot5190510451:AAEB_CmkxY-VXdoB8Fkwznrb3SVb_8YKhHc/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&reply_markup='.json_encode($keyboard).'&text=Elija que desea hacer');
-                break;
-         case '/ayuda':
-            $response = "Tranquilo, estoy contigo.";
-            $teclado = ["https://www.youtube.com/"],["Pos Ok"],["Pos Ok"];
-            sendMessage($chatId, $response, $teclado);
-            break;*/
+    
             case 'MundoDeportivo':
                 $response  = 'https://www.mundodeportivo.com/';
                 sendMessage($chatId, $response, FALSE);
                 break;
-                case 'AS':
-                    $response  = 'https://as.com/';
-                    sendMessage($chatId, $response, FALSE);
-                    break;
-                    case 'MARCA':
-                        $response  = 'https://www.marca.com/';
-                        sendMessage($chatId, $response, FALSE);
-                        break;
-        case 'futbol':
-            getNoticias($chatId, 1);
-            break;
-            case 'formula1';
-            getNoticias($chatId, 2);
-          break;
-          case 'basket':
-            getNoticias($chatId, 3);
-         break;
-         case 'golf':
-            getNoticias($chatId, 4);
-        break;
-        case 'boxeo':
-            getNoticias($chatId, 5);
-        break;
-        case 'nfl':
-            getNoticias($chatId, 6);
-        break;
-        case '/fecha':
-            $response  = 'La fecha actual es ' . date('d/m/Y');
-            sendMessage($chatId, $response, FALSE);
-                break;
-        
-            case '/hora':
-                $response  = 'La hora actual es ' . date('H:i:s');
+            case 'AS':
+                $response  = 'https://as.com/';
                 sendMessage($chatId, $response, FALSE);
-        break;
-        default:
-        $response = 'No te he entendido';
-        sendMessage($chatId, $response, FALSE);
-        break;
- 
-    }
+                break;
+            case 'MARCA':
+                $response  = 'https://www.marca.com/';
+                sendMessage($chatId, $response, FALSE);
+                break;
+
+
+            case 'futbol':
+                getNoticias($chatId, 1);
+                break;
+                case 'formula1';
+                getNoticias($chatId, 2);
+            break;
+            case 'basket':
+                getNoticias($chatId, 3);
+            break;
+            case 'golf':
+                getNoticias($chatId, 4);
+            break;
+            case 'boxeo':
+                getNoticias($chatId, 5);
+            break;
+            case 'nfl':
+                getNoticias($chatId, 6);
+            break;
+            case '/fecha':
+                $response  = 'La fecha actual es ' . date('d/m/Y');
+                sendMessage($chatId, $response, FALSE);
+                    break;
+            
+                case '/hora':
+                    $response  = 'La hora actual es ' . date('H:i:s');
+                    sendMessage($chatId, $response, FALSE);
+            break;
+            default:
+            $response = 'No te he entendido';
+            sendMessage($chatId, $response, FALSE);
+            break;
+    
+        }
 
 
 
