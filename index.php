@@ -15,7 +15,6 @@ switch($message) {
     case '/start':
         $response = 'Sobre que quieres las noticias';
         sendMessage($chatId, $response, TRUE);
-
        
         break;
         case '/help':
@@ -115,6 +114,8 @@ function getNoticias($chatId, $buscar){
     case 3;
     $url = "https://e00-marca.uecdn.es/rss/futbol/valencia.xml"
     break;
+    default:
+    break;
     }
     $xmlstring = file_get_contents($url, false, $context);
  
@@ -126,7 +127,7 @@ function getNoticias($chatId, $buscar){
     $titulos = $titulos."\n\n".$array['channel']['title']."<a href='".$array['channel']['item'][$i]['link']."'> +info</a>";
     }
     
-    sendMessage($chatId, $titulos, FALSE);
+    sendMessage($chatId, $titulos,FALSE);
 
  
 }
