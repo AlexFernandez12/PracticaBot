@@ -28,7 +28,9 @@ switch($message) {
             /help Muestra esta ayuda';
             sendMessage($chatId, $response, FALSE);
             break;
-        case '/saludo':
+        case '/noticias':
+            $response = 'Escribe en teclado sobre que quieres las noticias';
+            sendMessage($chatId, $response, TRUE);
             $keyboard = array('keyboard' =>
             array(array(
                 array('text'=>'/futbol','callback_data'=>"1"),
