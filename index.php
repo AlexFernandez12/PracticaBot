@@ -155,10 +155,11 @@ function getNoticias($chatId, $buscar){
     $array = json_decode($json, TRUE);
     
     for($i=0;$i<=9;$i++){
-    $titulos = $titulos."\n\n".$array['channel']['item'][$i]['title']."<a href='".$array['channel']['item'][$i]['link']."'> +info</a>";
+    $titulos = $array['channel']['item'][$i]['title']."<a href='".$array['channel']['item'][$i]['link']."'> +info</a>";
+    sendMessage($chatId, $titulos, FALSE);
     }
     
-    sendMessage($chatId, $titulos, FALSE);
+    
  
  
 }
