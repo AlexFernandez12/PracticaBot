@@ -142,8 +142,8 @@ function getNoticias($chatId, $buscar){
     $array = json_decode($json, TRUE);
     
     $titulos = $titulos."\n\n".$array['channel']['title']."<a href='".$array['channel']['item']['1']['link']."'> +info</a>";
-    $titulo = $titulos."\n\n".$array['channel']['title']."<a href='".$array['channel']['item']['2']['link']."'> +info</a>";
-    $titul = $titulos."\n\n".$array['channel']['title']."<a href='".$array['channel']['item']['3']['link']."'> +info</a>";
+    $titulo = $titulo."\n\n".$array['channel']['title']."<a href='".$array['channel']['item']['2']['link']."'> +info</a>";
+    $titul = $titul."\n\n".$array['channel']['title']."<a href='".$array['channel']['item']['3']['link']."'> +info</a>";
     
     
     sendMessage($chatId, $titulos, FALSE);
