@@ -143,7 +143,7 @@ function getNoticias($chatId, $buscar){
     $array = json_decode($json, TRUE);
     
     for ($i=0; $i < 9; $i++) { 
-    $titulos = "<a href='".$array['channel']['item'][$i]['link']."'> +info</a>";
+    $titulos = $titulos."<a href='".$array['channel']['item'][$i]['link']."'> +info</a>";
     }
     
     sendMessage($chatId, $titulos,FALSE);
