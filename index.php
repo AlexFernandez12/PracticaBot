@@ -16,20 +16,20 @@ switch($message) {
         $response = 'Bot iniciado, escriba /help para ayudarle con el funcionamiento';
         sendMessage($chatId, $response, FALSE);       
         break;
-        case '/start':
-            $response = 'Bot iniciado, escriba /help para ayudarle con el funcionamiento';
-            sendMessage($chatId, $response, TRUE);       
-            break;
         case '/help':
             $response  = 'Los comandos disponibles son:
             /start Inicializa el bot
-            /ayuda Te ofrece apoyo
+            /buscar Te ayuda a buscar las noticias
             /noticias Muestra noticias acerca de cualquier deporte
             /fecha Muestra la fecha actual
             /hora Muestra la hora actual
             /help Muestra esta ayuda';
             sendMessage($chatId, $response, FALSE);
             break;
+            case '/buscar':
+                $response  = 'Escriba /noticias para mostrar noticias del deporte que quiera';
+                sendMessage($chatId, $response, TRUE);
+                break;
         case '/noticias':
             $keyboard = array('keyboard' =>
             array(array(
@@ -39,7 +39,7 @@ switch($message) {
                 array('text'=>'formula1','callback_data'=>"2"),
             ),
             array(
-                array('text'=>'tenis','callback_data'=>"3"),
+                array('text'=>'basket','callback_data'=>"3"),
             ),
             array(
                 array('text'=>'golf','callback_data'=>"4"),
