@@ -104,14 +104,14 @@ function getNoticias($chatId, $buscar){
  
     $context = stream_context_create(array('https' =>  array('header' => 'Accept: application/xml')));
     switch($buscar){
-    case 1:
+    case '1':
     $url = "https://e00-marca.uecdn.es/rss/futbol/barcelona.xml";
     break;
-    case 2:
-    $url = "https://e00-marca.uecdn.es/rss/futbol/granada.xml"
+    case '2':
+    $url = "https://e00-marca.uecdn.es/rss/futbol/granada.xml";
     break;
-    case 3:
-    $url = "https://e00-marca.uecdn.es/rss/futbol/valencia.xml"
+    case '3':
+    $url = "https://e00-marca.uecdn.es/rss/futbol/valencia.xml";
     break;
     default:
     break;
