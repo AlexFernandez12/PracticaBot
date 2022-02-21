@@ -154,27 +154,12 @@ function getNoticias($chatId, $buscar){
     $json = json_encode($xml);
     $array = json_decode($json, TRUE);
     
-    $titulos = $titulos."\n\n".$array['channel']['title']."<a href='".$array['title']['item']['1']['link']."'> +info</a>";
-    $titulos1 = $titulos1."\n\n".$array['channel']['title']."<a href='".$array['title']['item']['2']['link']."'> +info</a>";
-    $titulos2 = $titulos2."\n\n".$array['channel']['title']."<a href='".$array['channel']['item']['3']['link']."'> +info</a>";
-    $titulos3 = $titulos3."\n\n".$array['channel']['title']."<a href='".$array['channel']['item']['4']['link']."'> +info</a>";
-    $titulos4 = $titulos4."\n\n".$array['channel']['title']."<a href='".$array['channel']['item']['5']['link']."'> +info</a>";
-    $titulos5 = $titulos5."\n\n".$array['channel']['title']."<a href='".$array['channel']['item']['6']['link']."'> +info</a>";
-    $titulos6 = $titulos6."\n\n".$array['channel']['title']."<a href='".$array['channel']['item']['7']['link']."'> +info</a>";
-    $titulos7 = $titulos7."\n\n".$array['channel']['title']."<a href='".$array['channel']['item']['8']['link']."'> +info</a>";
-    $titulos8 = $titulos8."\n\n".$array['channel']['title']."<a href='".$array['channel']['item']['9']['link']."'> +info</a>";
-    
+    for($i=0;$i<=9;$i++){
+    $titulos = $titulos."\n\n".$array['channel']['item'][$i]['title']."<a href='".$array['channel']['item'][$i]['link']."'> +info</a>";
+    }
     
     sendMessage($chatId, $titulos, FALSE);
-    sendMessage($chatId, $titulos1, FALSE);
-    sendMessage($chatId, $titulos2, FALSE);
-    sendMessage($chatId, $titulos3, FALSE);
-    sendMessage($chatId, $titulos4, FALSE);
-    sendMessage($chatId, $titulos5, FALSE);
-    sendMessage($chatId, $titulos6, FALSE);
-    sendMessage($chatId, $titulos7, FALSE);
-    sendMessage($chatId, $titulos8, FALSE);
-
+ 
  
 }
 
