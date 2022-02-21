@@ -88,7 +88,7 @@ switch($message) {
             sendMessage($chatId, $response, $teclado);
             break;*/
             case 'as':
-                $response  = 'https://as.com/';
+                $response  = 'https://www.mundodeportivo.com/';
                 sendMessage($chatId, $response, TRUE);
         case 'futbol':
             getNoticias($chatId, 1);
