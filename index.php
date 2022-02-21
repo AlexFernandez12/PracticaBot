@@ -19,7 +19,6 @@ switch($message) {
         case '/help':
             $response  = 'Los comandos disponibles son:
             /start Inicializa el bot
-            /saludo Presentacion del bot
             /ayuda Te ofrece apoyo
             /noticias Muestra noticias acerca de cualquier deporte
             /fecha Muestra la fecha actual
@@ -142,9 +141,10 @@ function getNoticias($chatId, $buscar){
     $json = json_encode($xml);
     $array = json_decode($json, TRUE);
     
-    for ($i=0; $i < 9; $i++) { 
-    $titulos = $titulos."<a href='".$array['channel']['item'][$i]['link']."'> +info</a>";
-    }
+    $titulos = $titulos."\n\n".$array['channel']['title']."<a href='".$array['channel']['item']['1']['link']."'> +info</a>";
+    $titulos = $titulos."\n\n".$array['channel']['title']."<a href='".$array['channel']['item']['2']['link']."'> +info</a>";
+    $titulos = $titulos."\n\n".$array['channel']['title']."<a href='".$array['channel']['item']['3']['link']."'> +info</a>";
+    
     
     sendMessage($chatId, $titulos,FALSE);
 
