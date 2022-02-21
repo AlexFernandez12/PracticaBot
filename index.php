@@ -58,10 +58,10 @@ switch($message) {
             $teclado = ["https://www.youtube.com/"],["Pos Ok"],["Pos Ok"];
             sendMessage($chatId, $response, $teclado);
             break;*/
-        case '/noticias':
+        case 'futbol':
             getNoticias($chatId, 1);
             break;
-            case 'futbol';
+            case 'formula1';
             getNoticias($chatId, 2);
           break;
           case 'basket':
@@ -108,7 +108,7 @@ function getNoticias($chatId, $buscar){
     $url = "https://e00-marca.uecdn.es/rss/futbol/barcelona.xml";
     break;
     case '2':
-    $url = "https://e00-marca.uecdn.es/rss/futbol/granada.xml";
+    $url = "https://as.com/rss/motor/formula_1.xml";
     break;
     case '3':
     $url = "https://as.com/rss/baloncesto/nba.xml";
