@@ -154,9 +154,9 @@ function getNoticias($chatId, $buscar){
     $json = json_encode($xml);
     $array = json_decode($json, TRUE);
     
-    $titulos = $titulos."\n\n".$array['channel']['title']."<a href='".$array['channel']['title']['1']['link']."'> +info</a>";
-    $titulos1 = $titulos1."\n\n".$array['channel']['title']."<a href='".$array['channel']['title']['2']['link']."'> +info</a>";
-    $titulos2 = $titulos2."\n\n".$array['channel']['title']."<a href='".$array['channel']['title']['3']['link']."'> +info</a>";
+    $titulos = $titulos."\n\n".$array['channel']['title']."<a href='".$array['channel']['title']['item']['1']['link']."'> +info</a>";
+    $titulos1 = $titulos1."\n\n".$array['channel']['title']."<a href='".$array['channel']['item']['2']['link']."'> +info</a>";
+    $titulos2 = $titulos2."\n\n".$array['channel']['title']."<a href='".$array['channel']['item']['3']['link']."'> +info</a>";
     $titulos3 = $titulos3."\n\n".$array['channel']['title']."<a href='".$array['channel']['item']['4']['link']."'> +info</a>";
     $titulos4 = $titulos4."\n\n".$array['channel']['title']."<a href='".$array['channel']['item']['5']['link']."'> +info</a>";
     $titulos5 = $titulos5."\n\n".$array['channel']['title']."<a href='".$array['channel']['item']['6']['link']."'> +info</a>";
