@@ -21,6 +21,7 @@ switch($message) {
             /start Inicializa el bot
             /buscar Te ayuda a buscar las noticias
             /noticias Muestra noticias acerca de cualquier deporte
+            /periodico Te lleva a la pagina del peridico que quieras ver
             /fecha Muestra la fecha actual
             /hora Muestra la hora actual
             /help Muestra esta ayuda';
@@ -45,24 +46,27 @@ switch($message) {
                 array('text'=>'golf','callback_data'=>"4"),
             ),
             array(
-                array('text'=>'boxeo','callback_data'=>"4"),
+                array('text'=>'boxeo','callback_data'=>"5"),
             ),
                 array(
-                    array('text'=>'nfl','callback_data'=>"5")
+                    array('text'=>'nfl','callback_data'=>"6")
                 )), 'one_time_keyboard' => false, 'resize_keyboard' => true
         );
         file_get_contents('https://api.telegram.org/bot5190510451:AAEB_CmkxY-VXdoB8Fkwznrb3SVb_8YKhHc/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&reply_markup='.json_encode($keyboard).'&text=Escoja un deporte por teclado');
             break;
-            case '/noticias1':
+            case '/periodico':
                 $keyboard = array('keyboard' =>
                 array(array(
                     array('text'=>'https://as.com/','callback_data'=>"1"),
                 ),
+                array(
+                    array('text'=>'https://www.mundodeportivo.com/','callback_data'=>"2"),
+                ),
                     array(
-                        array('text'=>'nfl','callback_data'=>"5")
+                        array('text'=>'https://www.marca.com/','callback_data'=>"3")
                     )), 'one_time_keyboard' => false, 'resize_keyboard' => true
             );
-            file_get_contents('https://api.telegram.org/bot5190510451:AAEB_CmkxY-VXdoB8Fkwznrb3SVb_8YKhHc/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&reply_markup='.json_encode($keyboard).'&text=Escoja un deporte por teclado');
+            file_get_contents('https://api.telegram.org/bot5190510451:AAEB_CmkxY-VXdoB8Fkwznrb3SVb_8YKhHc/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&reply_markup='.json_encode($keyboard).'&text=Escoja un peridico por teclado');
                 break;
            /* case '/enlaces':
                 $keyboard = {
