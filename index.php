@@ -40,7 +40,7 @@ switch($message) {
         );
         file_get_contents('https://api.telegram.org/bot5190510451:AAEB_CmkxY-VXdoB8Fkwznrb3SVb_8YKhHc/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&reply_markup='.json_encode($keyboard).'&text=Elija que desea hacer');
             break;
-            /*case '/enlaces':
+            case '/enlaces':
                 $response = 'Selecciona uno';
                 $keyboard = {
                   'inline_keyboard': [
@@ -54,8 +54,8 @@ switch($message) {
                   ]
                 };
                 sendMessage($chatId, $response);
-                break;*/
-      /*  case '/ayuda':
+                break;
+        case '/ayuda':
             $response = "Tranquilo, estoy contigo.";
             $teclado = ["https://www.youtube.com/"],["Pos Ok"],["Pos Ok"];
             sendMessage($chatId, $response, $teclado);
@@ -68,7 +68,7 @@ switch($message) {
           break;
           case 'tenis':
             getNoticias($chatId, 3);
-        break;*/
+        break;
             case '/fecha':
                 $response  = 'La fecha actual es ' . date('d/m/Y');
                 sendMessage($chatId, $response, FALSE);
@@ -99,17 +99,7 @@ switch($message) {
         else $url = $GLOBALS['website'].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.urlencode($response);
         file_get_contents($url);
     }
-    
-/*
-function sendMessage($chatId, $response, $repl) {
-    if($repl==TRUE){
-        $reply_mark=array('force_reply'=>True);
-        $url = $GLOBALS['website'].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&reply_markup='.json_encode($reply_mark).'&text='.urlencode($response);
-    }
-    else $url = $GLOBALS['website'].'/sendMessage?chat_id='.$chatId.'&parse_mode=HTML&text='.urlencode($response);
-    file_get_contents($url);
-}
- *//*
+
 function getNoticias($chatId, $buscar){
  
     //include("simple_html_dom.php");
@@ -141,6 +131,6 @@ function getNoticias($chatId, $buscar){
  
 }
 
-*/
+
 ?>
 
